@@ -2,6 +2,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 
+// Space astronaut with background of moon image
 import headerImg from '../assets/img/header-img.svg';
 
 // Use state and Use Effect hooks to store the "state" of the animation typing text
@@ -15,6 +16,7 @@ export const Banner = () => {
     'Full Stack Developer',
     'Web Developer',
     'Java Developer',
+    'JavaScript Developer',
   ];
   // Loop counter on which text to start first
   const [loopNum, setLoopNum] = useState(0);
