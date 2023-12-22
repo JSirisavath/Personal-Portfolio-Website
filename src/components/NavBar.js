@@ -7,7 +7,7 @@ import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
 
-export const NavBar = () => {
+export const NavBar = ({ appRef }) => {
   // Working Links for the skills, badging, homepage, etc
   // Initial set state will be home page
   const [activeLink, setActiveLink] = useState('home');
@@ -19,7 +19,7 @@ export const NavBar = () => {
   useEffect(() => {
     const onScroll = () => {
       // If user's scroll height is more than 50, set the scroll to be true
-      if (window.scrollY > 50) {
+      if (appRef && appRef.current.scrollTop > 50) {
         setScroll(true);
       }
       //   Else if the user's scroll height is less than 50,or hasn't been scrolled yet, set the scroll to be false
@@ -27,14 +27,17 @@ export const NavBar = () => {
         setScroll(false);
       }
     };
-    // Fire this scroll function only when the window (browser) is scrolled, then call that onScroll function
-    // Memory Leaks Prevention: If an event listener attached to a global object like window is not removed, it continues to exist in memory. This can lead to memory leaks, as the garbage collector won't be able to free up the memory used by the component since the event listener still holds a reference to it.
-    // Performance Optimization: Unnecessary event listener lead to decreased performance as they keep running in the background, consuming resources even when the component they belong to is not use
-    window.addEventListener('scroll', onScroll);
 
-    // remove the event listener when the component gets removed from the DOM
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    // Attach event listener to the scrollable element or window
+    const scrollableElement =
+      appRef && appRef.current ? appRef.current : window;
+    scrollableElement.addEventListener('scroll', onScroll);
+
+    // Cleanup function
+    return () => {
+      scrollableElement.removeEventListener('scroll', onScroll);
+    };
+  }, [appRef]);
 
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
@@ -77,17 +80,6 @@ export const NavBar = () => {
               Skills
             </Nav.Link>
 
-            {/* badging link */}
-            <Nav.Link
-              href="#badging"
-              className={
-                activeLink === 'badging' ? 'active navbar-link' : 'navbar-link'
-              }
-              onClick={() => onUpdateActiveLink('badging')}
-            >
-              Badging
-            </Nav.Link>
-
             {/* Projects link */}
             <Nav.Link
               href="#projects"
@@ -97,6 +89,17 @@ export const NavBar = () => {
               onClick={() => onUpdateActiveLink('projects')}
             >
               Projects
+            </Nav.Link>
+
+            {/* badging link */}
+            <Nav.Link
+              href="#badging"
+              className={
+                activeLink === 'badging' ? 'active navbar-link' : 'navbar-link'
+              }
+              onClick={() => onUpdateActiveLink('badging')}
+            >
+              Badging
             </Nav.Link>
 
             {/* QNA */}

@@ -1,23 +1,29 @@
 import { useState, useEffect } from 'react';
 
-export const PurpleLine = () => {
+export const PurpleLine = ({ appRef }) => {
   const [borderColor, setBorderColor] = useState('#a855f7'); // Initial light purple color
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY; // Use scrollY instead of pageYOffset
-      const newColor = calculateColorBasedOnScroll(scrollY);
+      const scrollContainer =
+        appRef && appRef.current ? appRef.current : document.documentElement;
+      const scrollY = scrollContainer.scrollTop;
+      const scrollHeight =
+        scrollContainer.scrollHeight - scrollContainer.clientHeight;
+      const newColor = calculateColorBasedOnScroll(scrollY, scrollHeight);
       setBorderColor(newColor);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const scrollableElement =
+      appRef && appRef.current ? appRef.current : window;
+    scrollableElement.addEventListener('scroll', handleScroll);
 
-  const calculateColorBasedOnScroll = (scrollY) => {
+    return () => scrollableElement.removeEventListener('scroll', handleScroll);
+  }, [appRef]);
+
+  const calculateColorBasedOnScroll = (scrollY, scrollHeight) => {
     const startColor = { r: 168, g: 85, b: 247 }; // Light purple
     const endColor = { r: 58, g: 12, b: 163 }; // Dark purple
-    const scrollHeight = document.body.scrollHeight - window.innerHeight;
     const scrollRatio = Math.min(scrollY / scrollHeight, 1);
 
     const r = interpolate(startColor.r, endColor.r, scrollRatio);
@@ -38,9 +44,9 @@ export const PurpleLine = () => {
         top: 0,
         bottom: 0,
         left: 0,
-        width: '2px', // Width of the line
-        backgroundColor: borderColor, // Apply dynamic color
-        zIndex: 10, // Ensure it's above other elements
+        width: '2px',
+        backgroundColor: borderColor,
+        zIndex: 10,
       }}
     />
   );

@@ -42,8 +42,6 @@ export const Skills = () => {
                 responsive={responsive}
                 infinite={true}
                 className="skill-slider"
-                keyBoardControl={true}
-                autoPlaySpeed={1000}
               >
                 {/* Each skill item is inside this carousel */}
                 <div className="item">
@@ -67,7 +65,11 @@ export const Skills = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-left" src={colorSharp} />
+      <img
+        className="background-image-left"
+        src={colorSharp}
+        alt="background_image_left"
+      />
     </section>
   );
 };
