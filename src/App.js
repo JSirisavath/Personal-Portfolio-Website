@@ -7,12 +7,9 @@ import { PurpleLine } from './components/PurpleLine';
 
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
-
-import { Contact } from './components/Contact';
+import React, { useEffect, useRef } from 'react';
 
 import { Footer } from './components/Footer';
-
-import React, { useEffect, useRef } from 'react';
 
 function App() {
   const appRef = useRef(null);
@@ -60,8 +57,6 @@ function App() {
       <Skills />
 
       <Projects />
-
-      <Contact />
 
       <Footer />
     </div>
