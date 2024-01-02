@@ -8,6 +8,8 @@ import { PurpleLine } from './components/PurpleLine';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 
+import { QnA } from './components/QnA';
+
 import { Contact } from './components/Contact';
 
 import { Footer } from './components/Footer';
@@ -61,6 +63,10 @@ function App() {
 
       <Projects />
 
+      {/* Question and answer section */}
+      <QnA />
+
+      {/* Contact form using node mailer and express library. Work in server.js and contact.js for client side */}
       <Contact />
 
       <Footer />
