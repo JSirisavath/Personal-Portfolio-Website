@@ -29,7 +29,6 @@ contactEmail.verify((error) => {
     console.log(error);
   } else {
     console.log('Ready to Send');
-    console.log(process.env); // This will print all the loaded environment variables
   }
 });
 
