@@ -2,7 +2,7 @@ import { Alert, Col, Row } from 'react-bootstrap';
 
 import { useState, useEffect } from 'react';
 
-export const Newsletter = ({ onlyValidated, status, message }) => {
+export const Newsletter = ({ onValidated, status, message }) => {
   const [email, setEmail] = useState('');
 
   // If users have an unsuccessful submission, keep their email on the fields and don't clear it, and the unsuccessful message displayed as well (the status will be changed)
@@ -17,7 +17,7 @@ export const Newsletter = ({ onlyValidated, status, message }) => {
     email &&
       email.indexOf('@') > -1 &&
       // Validate the forms (email) that was passed
-      onlyValidated({
+      onValidated({
         EMAIL: email,
       });
   };
@@ -52,7 +52,7 @@ export const Newsletter = ({ onlyValidated, status, message }) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">Subscribe!</button>
               </div>
             </form>
           </Col>
