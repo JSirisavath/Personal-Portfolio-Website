@@ -540,6 +540,37 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   z-index: -4;
 }
 
+/* Questions and Answer Section */
+.qna {
+  padding: 90px 0;
+  /* z-index: -1; */
+  background-image: url('./assets/img/banner-bg.png');
+  position: relative;
+  /* background-color: black; */
+}
+
+.qna h2 {
+  font-size: 45px;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+/* Scrollable section with many questions and answers */
+
+.scrollable-content {
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: #b8b8b8;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #121212;
+  padding: 25px 45px;
+  padding-left: 45px;
+  padding-right: 45px;
+  margin-bottom: 30px;
+}
+
 /* Footer */
 .footer {
   padding: 0 0 50px 0;

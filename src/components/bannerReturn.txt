@@ -1,49 +1,6 @@
-return (
-    <section className="banner" id="home">
-      <Container>
-        <Row className="align-items-center">
-          <Col xs={12} md={6} xl={7}>
-            {/* Track visibility allows to check if react component are visible on screen */}
-            <TrackVisibility>
-              {({ isVisible }) => (
-                <div
-                  className={
-                    isVisible ? 'animate__animated animate__bounce' : ''
-                  }
-                >
-                  <span className="tagline">Welcome to my Portfolio!</span>
-                  <h1>
-                    {`Hi, I'm Jerry Sirisavath, `}
-                       <span className="txt-rotate" dataPeriod="1000">
-                      <span className="wrap">{text}</span>
-                    </span>
-                  </h1>
-                  {/* About me section */}
-                  <p>
-                    As a current student at Minneapolis College (MCTC), I am
-                    immersing myself in the dynamic world of technology with a
-                    keen focus on full-stack and web development. My journey in
-                    tech unfolds as I volunteer with a vibrant software
-                    development team at{' '}
-                    <a
-                      href="https://seedsofsuccess.us"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="Seeds_of_Success_url"
-                    >
-                      <i>"Seeds of Success"</i>
-                    </a>
-                    , where I collaborate with a community of open and
-                    growth-minded individuals. My passion for technology extends
-                    to Java development, where I leverage my skills to craft
-                    robust and scalable solutions. With an insatiable appetite
-                    for learning and mastering various technology stacks, I am
-                    committed to bridging the gap between innovative business
-                    ideas and the technical roadblocks they encounter. My goal
-                    is to transform challenges into opportunities through
-                    creative and efficient software solutions.
-                  </p>
-                  {/* QNA section */}
+Qna section
+
+{/* QNA section */}
                   <h3>Common Questions about me!</h3>
                   <p>
                     <b>Q:How do you pronounce your last name? </b>
@@ -81,18 +38,3 @@ return (
                       nickname, Jay.{' '}
                     </i>
                   </p>
-                  <button onClick={() => console.log('Connect with me!')}>
-                    Let's Connect <ArrowRightCircle size={25} />
-                  </button>
-                </div>
-              )}
-            </TrackVisibility>
-          </Col>
-          {/* Image section */}
-          <Col xs={12} md={6} xl={5}>
-            <img src={headerImg} alt="Header Img" />
-          </Col>
-        </Row>
-      </Container>
-    </section>
-  );

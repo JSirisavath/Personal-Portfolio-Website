@@ -1,0 +1,106 @@
+import { Container, Row, Col } from 'react-bootstrap';
+
+export const QnA = () => {
+  return (
+    <section className="qna" id="QNA">
+      <Container>
+        <Row>
+          <Col size={12}>
+            <h2>Common Questions About Me!</h2>
+            {/* Scrollable content here */}
+            <div className="qna-bx scrollable-content">
+              <p>
+                <b>Q: How do you pronounce your last name? </b>
+                A:
+                <i>"Si-ri-sa-vat"</i>
+                <i>
+                  {' '}
+                  - My last name came from a Lao origin background. Laos is a
+                  country in Southeast Asia where there are rich and diverse
+                  cultural history that is reflected in its surnames!
+                </i>
+              </p>
+
+              <p>
+                <b>
+                  Q: What are some programming languages you've worked with?
+                </b>{' '}
+                A:{' '}
+                <i>
+                  I worked with HTML, CSS, JavaScript, Java, Python,and few
+                  other frameworks from both Python and JavaScript.
+                </i>
+              </p>
+              <p>
+                <b>
+                  Q: What are your top 3 skills you consider to be the most
+                  proficiently in?
+                </b>{' '}
+                A:
+                <i>
+                  <br></br>
+                  1. <u>Troubleshooting</u>: I excel at identifying and
+                  resolving complex issues, drawing on both technical knowledge
+                  and creative problem-solving abilities. <br></br> 2.{' '}
+                  <u> Technical Proficiency</u>: I am well-versed in several
+                  programming languages, including JavaScript, Java, and Python,
+                  which enables me to adapt to diverse technical environments
+                  seamlessly. <br></br>3. <u>Leadership</u>: My experience as a
+                  team leader has equipped me with the skills to manage,
+                  motivate, and guide teams towards achieving collective goals.
+                </i>
+              </p>
+              <p>
+                <b>Q: What are your hobbies besides coding?</b> A:{' '}
+                <i>
+                  I am an avid enjoyer to many entertainments, but I also have
+                  many love to creation! I love making music, learning/playing
+                  the piano, and also writing and creating melodies to beats!
+                  Though, when I am not in my creative mode, I like to rewind by
+                  playing video games and watch recommended videos on Youtube!
+                </i>
+              </p>
+              <p>
+                <b>Q: Why do you go by 'Jay' sometimes?</b> A:
+                <i>
+                  {' '}
+                  I went by Jay more often starting from my old job at CVS.
+                  There would be another person name 'Gerry', but also
+                  pronounced the same as 'Jerry'. But one of us would be called
+                  in the loudspeaker, we would get confused and both of us would
+                  go up front to respond even if only one of us was needed. So
+                  to clarify the confusion, I went by my nickname, Jay.{' '}
+                </i>
+              </p>
+              <p>
+                <b>
+                  Q: Do you play any sports or any other physical activities?
+                </b>{' '}
+                A:
+                <i>
+                  {' '}
+                  I love to spend my time at the gym excising. I also am
+                  interested in 'Muy thai' (Thai boxing) where not only I can
+                  get in shape a lot faster, but also learn self defense!{' '}
+                </i>
+              </p>
+              <p>
+                <b>Q: Do you watch any anime?</b> A:{' '}
+                <i>
+                  Yes! I love watching action packed and adventure type anime! I
+                  started getting into anime more when I watched, 'Naruto
+                  Shippuden'. To me, story, character building, and being able
+                  to relate to character's struggles and take that as a learning
+                  experience to improve, is what keeps me hook on their
+                  beautiful story telling.Even if there are fictional characters
+                  in a show, there are some very human-like characteristics that
+                  we can take away and share that with one self.
+                </i>
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
