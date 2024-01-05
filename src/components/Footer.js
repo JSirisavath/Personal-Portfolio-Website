@@ -34,6 +34,27 @@ export const Footer = () => {
             </div>
 
             <p>Copyright 2023. All Right Reserved by Jerry Sirisavath</p>
+            <p>
+              <a
+                target="_blank"
+                href="https://icons8.com/icon/98964/youtube-logo"
+              >
+                YouTube Logo
+              </a>{' '}
+              icon by{' '}
+              <a target="_blank" href="https://icons8.com">
+                Icons8
+              </a>
+            </p>
+            <p>
+              <a target="_blank" href="https://icons8.com/icon/57786/podcast">
+                Podcast
+              </a>{' '}
+              icon by{' '}
+              <a target="_blank" href="https://icons8.com">
+                Icons8
+              </a>
+            </p>
           </Col>
         </Row>
       </Container>

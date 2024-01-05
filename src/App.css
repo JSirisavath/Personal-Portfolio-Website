@@ -128,6 +128,7 @@ p.success {
 p.danger {
   color: red;
 }
+
 /************ Navbar Css ************/
 nav.navbar {
   padding: 18px 0;
@@ -371,6 +372,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 /* Skills styles */
 .skill {
   padding: 0 0 50px 0;
+  padding-top: 130px;
   position: relative;
 }
 
@@ -415,7 +417,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 /* Projects CSS */
 .project {
-  padding: 120px 0;
+  padding: 130px 0;
   /* z-index: -1; */
   position: relative;
   background-color: black;
@@ -542,7 +544,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 /* Questions and Answer Section */
 .qna {
-  padding: 90px 0;
+  padding: 130px 0;
   /* z-index: -1; */
   background-image: url('./assets/img/banner-bg.png');
   position: relative;
@@ -561,7 +563,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 .scrollable-content {
   max-height: 300px;
   overflow-y: auto;
-  background-color: #b8b8b8;
+  background-color: ghostwhite;
   border-radius: 15px;
   box-sizing: border-box;
   color: #121212;
@@ -676,7 +678,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 /* Contact section */
 .contact {
   background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
-  padding: 60px 0 200px 0;
+  padding: 100px 0 150px 0;
 }
 .contact img {
   width: 92%;
@@ -693,12 +695,18 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   color: #fff;
-  margin: 0 0 8px 0;
+  margin: 0 20px 15px 0;
   padding: 18px 26px;
   font-weight: 500;
   font-size: 18px;
   letter-spacing: 0.8px;
   transition: 0.3s ease-in-out;
+}
+
+.contact form textarea {
+  height: 130px;
+  margin-top: 25px;
+  width: 100%;
 }
 .contact form input:focus,
 .contact form textarea:focus {

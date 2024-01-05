@@ -6,6 +6,7 @@ import logo from '../assets/img/logo.svg';
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
+import navIcon4 from '../assets/img/nav-icon4.png';
 
 export const NavBar = ({ appRef }) => {
   // Working Links for the skills, badging, homepage, etc
@@ -43,6 +44,36 @@ export const NavBar = ({ appRef }) => {
     setActiveLink(value);
   };
 
+  // Handling navlink clicks for smooth behavior
+
+  const handleNavLinksClick = (event, sectionID) => {
+    // Prevent default anchor link behavior
+    event.preventDefault();
+
+    // Update active link state
+    onUpdateActiveLink(sectionID);
+
+    // Scroll to that section users clicked on
+    scrollToSection(sectionID);
+  };
+
+  const scrollToSection = (sectionID) => {
+    const navbarHeight = 70;
+    const usersClickedSection = document.getElementById(sectionID);
+    // Smooth scroll behavior
+    if (usersClickedSection) {
+      usersClickedSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
+  // Handle 'Let's connect' button to open my meeting scheduler for users
+  const handleClick = () => {
+    window.open('https://calendly.com/jsirisavath', '_blank');
+  };
+
   return (
     // React-bootstrap navigation bar
     <Navbar expand="md" className={scrolled ? 'scrolled' : ''}>
@@ -64,7 +95,7 @@ export const NavBar = ({ appRef }) => {
                 activeLink === 'home' ? 'active navbar-link' : 'navbar-link'
               }
               //   When the link has been clicked, update to the home page
-              onClick={() => onUpdateActiveLink('home')}
+              onClick={(e) => handleNavLinksClick(e, 'home')}
             >
               Home
             </Nav.Link>
@@ -75,7 +106,7 @@ export const NavBar = ({ appRef }) => {
               className={
                 activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'
               }
-              onClick={() => onUpdateActiveLink('skills')}
+              onClick={(e) => handleNavLinksClick(e, 'skills')}
             >
               Skills
             </Nav.Link>
@@ -86,7 +117,7 @@ export const NavBar = ({ appRef }) => {
               className={
                 activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'
               }
-              onClick={() => onUpdateActiveLink('projects')}
+              onClick={(e) => handleNavLinksClick(e, 'projects')}
             >
               Projects
             </Nav.Link>
@@ -97,7 +128,7 @@ export const NavBar = ({ appRef }) => {
               className={
                 activeLink === 'badging' ? 'active navbar-link' : 'navbar-link'
               }
-              onClick={() => onUpdateActiveLink('badging')}
+              onClick={(e) => handleNavLinksClick(e, 'badging')}
             >
               Badging
             </Nav.Link>
@@ -108,7 +139,7 @@ export const NavBar = ({ appRef }) => {
               className={
                 activeLink === 'QNA' ? 'active navbar-link' : 'navbar-link'
               }
-              onClick={() => onUpdateActiveLink('QNA')}
+              onClick={(e) => handleNavLinksClick(e, 'QNA')}
             >
               QNA
             </Nav.Link>
@@ -123,7 +154,7 @@ export const NavBar = ({ appRef }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={navIcon1} alt=""></img>
+                <img src={navIcon1} alt="LinkedIn Icon"></img>
               </a>
               {/* GitHub */}
               <a
@@ -131,15 +162,28 @@ export const NavBar = ({ appRef }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={navIcon2} alt=""></img>
+                <img src={navIcon2} alt="GitHub Icon"></img>
               </a>
               {/* Youtube Podcast */}
-              <a href="#">
-                <img src={navIcon3} alt=""></img>
+              <a
+                href="https://www.youtube.com/@BeyondBelief-yu5fp/featured"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={navIcon3} alt="YouTube Icon"></img>
+              </a>
+
+              {/* Spotify Podcast */}
+              <a
+                href="https://open.spotify.com/show/4wn1CfSEEN7BytdZb86WLU"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={navIcon4} alt="Spotify Podcast Icon"></img>
               </a>
             </div>
             {/* Contact me button */}
-            <button className="vvd" onClick={() => console.log('connect')}>
+            <button className="vvd" onClick={handleClick}>
               <span>Let's Connect!</span>
             </button>
           </span>

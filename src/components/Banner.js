@@ -1,12 +1,14 @@
 import { Container, Row, Col } from 'react-bootstrap';
 
+import Contact from './Contact.js';
+
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 
 // Space astronaut with background of moon image
 import headerImg from '../assets/img/header-img.svg';
 
 // Use state and Use Effect hooks to store the "state" of the animation typing text
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 // Animate CSS
 import 'animate.css';
@@ -77,6 +79,14 @@ export const Banner = () => {
     }
   };
 
+  // Go to the contact section
+  const handleClick = () => {
+    const contactSection = document.getElementById('connect');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="banner" id="home">
       <Container>
@@ -122,8 +132,8 @@ export const Banner = () => {
                     is to transform challenges into opportunities through
                     creative and efficient software solutions.
                   </p>
-                  <button onClick={() => console.log('Connect with me!')}>
-                    Let's Connect <ArrowRightCircle size={25} />
+                  <button onClick={handleClick}>
+                    Contact Me! <ArrowRightCircle size={25} />
                   </button>
                 </div>
               )}
