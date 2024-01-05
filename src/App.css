@@ -562,7 +562,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 /* Questions and Answer Section */
 .qna {
-  padding: 130px 0;
+  padding: 120px 0;
   /* z-index: -1; */
   background-image: url('./assets/img/banner-bg.png');
   position: relative;
@@ -573,6 +573,16 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   font-size: 45px;
   font-weight: 700;
   text-align: center;
+}
+
+#QnADescription {
+  color: #b8b8b8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px auto 30px auto;
+  text-align: center;
+  width: 56%;
   padding-bottom: 2rem;
 }
 
