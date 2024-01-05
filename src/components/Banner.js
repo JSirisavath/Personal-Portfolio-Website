@@ -1,7 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
 
-import Contact from './Contact.js';
-
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 
 // Space astronaut with background of moon image
@@ -83,7 +81,7 @@ export const Banner = () => {
   const handleClick = () => {
     const contactSection = document.getElementById('connect');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
