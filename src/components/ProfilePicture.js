@@ -5,6 +5,7 @@ import ProfilePic from '../assets/img/ProfilePic.jpeg';
 function ProfilePicture() {
   return (
     <div
+      className="imageContainer"
       style={{
         borderRadius: '50%',
         overflow: 'hidden',
@@ -13,9 +14,15 @@ function ProfilePicture() {
       }}
     >
       <img
+        id="profilePic"
         src={ProfilePic}
         alt="MyProfilePicture"
-        style={{ width: '100%', height: '100%', marginRight: '2rem' }}
+        style={{
+          width: '100%',
+          height: '100%',
+          marginRight: '2rem',
+          overflow: 'hidden',
+        }}
       />
     </div>
   );
