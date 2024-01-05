@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
-import logo from '../assets/img/logo.svg';
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
 import navIcon4 from '../assets/img/nav-icon4.png';
+
+import ProfilePicture from './ProfilePicture';
 
 export const NavBar = ({ appRef }) => {
   // Working Links for the skills, badging, homepage, etc
@@ -58,7 +59,6 @@ export const NavBar = ({ appRef }) => {
   };
 
   const scrollToSection = (sectionID) => {
-    const navbarHeight = 70;
     const usersClickedSection = document.getElementById(sectionID);
     // Smooth scroll behavior
     if (usersClickedSection) {
@@ -80,7 +80,7 @@ export const NavBar = ({ appRef }) => {
       <Container>
         <Navbar.Brand href="#home">
           {/* Image brand logo */}
-          <img src={logo} alt="Logo" />
+          <ProfilePicture />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
@@ -89,7 +89,7 @@ export const NavBar = ({ appRef }) => {
           <Nav className="ms-auto">
             {/* Links to skills, badging projects,and homepage section */}
             {/* Home link */}
-            <Nav.Link
+            {/* <Nav.Link
               href="#home"
               className={
                 activeLink === 'home' ? 'active navbar-link' : 'navbar-link'
@@ -98,7 +98,7 @@ export const NavBar = ({ appRef }) => {
               onClick={(e) => handleNavLinksClick(e, 'home')}
             >
               Home
-            </Nav.Link>
+            </Nav.Link> */}
 
             {/* Skills link */}
             <Nav.Link

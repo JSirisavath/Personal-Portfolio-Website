@@ -2,7 +2,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { MailchimpForm } from './MailchimpForm';
 
-import logo from '../assets/img/logo.svg';
+import logo from '../assets/img/logo.png';
 
 // Social icons
 // import navIcon1 from '../assets/img/nav-icon1.svg';
@@ -47,8 +47,8 @@ export const Footer = () => {
               </a>
             </p>
             <p>
-              <a target="_blank" href="https://icons8.com/icon/57786/podcast">
-                Podcast
+              <a target="_blank" href="https://icons8.com/icon/9622/microphone">
+                Microphone
               </a>{' '}
               icon by{' '}
               <a target="_blank" href="https://icons8.com">
