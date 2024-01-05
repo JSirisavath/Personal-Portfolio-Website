@@ -130,6 +130,21 @@ p.danger {
 }
 
 /************ Navbar Css ************/
+
+/* Profile pic hover affect - Both image itself and the container */
+#profilePic:hover {
+  filter: brightness(107%);
+  transition: all 0.3s ease;
+  transform: scale(1.1);
+}
+
+.imageContainer:hover {
+  filter: brightness(107%);
+  transform: scale(1.1);
+  /* Delay to grow te image container after 3 seconds when image is hovered */
+  transition: all 0.6s ease;
+}
+
 nav.navbar {
   padding: 18px 0;
   position: fixed;
@@ -155,7 +170,10 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
 }
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
-  opacity: 1;
+  opacity: 3;
+  /* Hover effect to make the text larger and a simple animation when on hover over.  */
+  font-size: 20px;
+  transition: all 0.4s ease;
 }
 span.navbar-text {
   display: flex;
