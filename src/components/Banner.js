@@ -18,10 +18,14 @@ import TrackVisibility from 'react-on-screen';
 export const Banner = () => {
   // Text to rotate
   const toRotate = [
-    'Full Stack Developer',
+    'Hello World!',
+    'I am interested in ...',
     'Web Developer',
     'Java Developer',
     'JavaScript Developer',
+    'Python Developer',
+    'Reactjs Developer',
+    'Full Stack Developer',
     'DevOps',
   ];
   // Loop counter on which text to start first
