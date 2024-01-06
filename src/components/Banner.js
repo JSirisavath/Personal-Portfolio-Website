@@ -18,10 +18,14 @@ import TrackVisibility from 'react-on-screen';
 export const Banner = () => {
   // Text to rotate
   const toRotate = [
-    'Full Stack Developer',
+    'Hello World!',
+    'I am interested in ...',
     'Web Developer',
     'Java Developer',
     'JavaScript Developer',
+    'Python Developer',
+    'Reactjs Developer',
+    'Full Stack Developer',
     'DevOps',
   ];
   // Loop counter on which text to start first
@@ -98,45 +102,51 @@ export const Banner = () => {
                     isVisible ? 'animate__animated animate__fadeInTopRight' : ''
                   }
                 >
-                  <span className="tagline">Welcome to my Portfolio!</span>
-                  <h1>
-                    {`Hi, I'm Jerry Sirisavath, `}
-                    <span className="txt-rotate" dataPeriod="1000">
-                      <span className="wrap">{text}</span>
-                    </span>
-                  </h1>
-                  {/* About me section */}
-                  <p>
-                    As a current student at Minneapolis College (MCTC), I am
-                    immersing myself in the dynamic world of technology with a
-                    keen focus on full-stack and web development. My journey in
-                    tech unfolds as I volunteer with a vibrant software
-                    development team at{' '}
-                    <a
-                      href="https://seedsofsuccess.us"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="Seeds_of_Success_url"
-                    >
-                      <i>"Seeds of Success"</i>
-                    </a>
-                    , where I collaborate with a community of open and
-                    growth-minded individuals. My passion for technology extends
-                    to Java development, where I leverage my skills to craft
-                    robust and scalable solutions. With an insatiable appetite
-                    for learning and mastering various technology stacks, I am
-                    committed to bridging the gap between innovative business
-                    ideas and the technical roadblocks they encounter. My goal
-                    is to transform challenges into opportunities through
-                    creative and efficient software solutions.
-                  </p>
-                  <button onClick={handleClick}>
-                    Contact Me! <ArrowRightCircle size={25} />
-                  </button>
+                  <div className="header-container">
+                    <span className="tagline">Welcome to my Portfolio!</span>
+                    <h1 className="header-with-rotation">
+                      {`Hi, I'm Jerry Sirisavath,  `}
+                      <span className="txt-rotate" dataPeriod="1000">
+                        <span className="wrap"> {text}</span>
+                      </span>
+                    </h1>
+                  </div>
+                  <div className="AboutMeSection">
+                    {/* About me section */}
+                    <p>
+                      As a current student at Minneapolis College (MCTC), I am
+                      immersing myself in the dynamic world of technology with a
+                      keen focus on full-stack and web development. My journey
+                      in tech unfolds as I volunteer with a vibrant software
+                      development team at{' '}
+                      <a
+                        href="https://seedsofsuccess.us"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="Seeds_of_Success_url"
+                      >
+                        <i>"Seeds of Success"</i>
+                      </a>
+                      , where I collaborate with a community of open and
+                      growth-minded individuals. My passion for technology
+                      extends to Java development, where I leverage my skills to
+                      craft robust and scalable solutions. With an insatiable
+                      appetite for learning and mastering various technology
+                      stacks, I am committed to bridging the gap between
+                      innovative business ideas and the technical roadblocks
+                      they encounter. My goal is to transform challenges into
+                      opportunities through creative and efficient software
+                      solutions.
+                    </p>
+                    <button onClick={handleClick}>
+                      Contact Me! <ArrowRightCircle size={25} />
+                    </button>
+                  </div>
                 </div>
               )}
             </TrackVisibility>
           </Col>
+
           {/* Image section */}
           <Col xs={12} md={6} xl={5}>
             <img src={headerImg} alt="Header Img" />

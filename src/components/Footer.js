@@ -33,7 +33,10 @@ export const Footer = () => {
               </a> */}
             </div>
 
-            <p>Copyright 2023. All Right Reserved by Jerry Sirisavath</p>
+            <p>
+              Copyright 2024 JSirisavath, All rights reserved by Jerry
+              Sirisavath
+            </p>
             <p>
               <a
                 target="_blank"

@@ -17,6 +17,9 @@ export const NavBar = ({ appRef }) => {
   // Keep information whether the user has scrolled
   const [scrolled, setScroll] = useState(false);
 
+  // Toggle the navbar expansion
+  const [expanded, setExpanded] = useState(false);
+
   // Use effect hook would be triggered if the user has set the state for scrolling to be true (start scrolling)
   useEffect(() => {
     const onScroll = () => {
@@ -74,6 +77,11 @@ export const NavBar = ({ appRef }) => {
     window.open('https://calendly.com/jsirisavath', '_blank');
   };
 
+  // Event handling for toggling expansion state
+
+  const toggleNavbar = () => {
+    setExpanded(!expanded);
+  };
   return (
     // React-bootstrap navigation bar
     <Navbar expand="md" className={scrolled ? 'scrolled' : ''}>
@@ -82,7 +90,7 @@ export const NavBar = ({ appRef }) => {
           {/* Image brand logo */}
           <ProfilePicture />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleNavbar}>
           <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">

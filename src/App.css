@@ -50,7 +50,8 @@ body {
 }
 
 *::-webkit-scrollbar {
-  width: 10px; /* Adjust the width of the scrollbar */
+  width: 1.2px; /* Adjust the width of the scrollbar */
+  height: 1px;
 }
 
 *::-webkit-scrollbar-track {
@@ -69,6 +70,7 @@ body {
 /* Styling for Firefox */
 * {
   scrollbar-width: thin;
+
   scrollbar-color: rgba(128, 128, 128, 0.5) rgba(255, 255, 255, 0.1);
 }
 
@@ -132,6 +134,11 @@ p.danger {
 /************ Navbar Css ************/
 
 /* Profile pic hover affect - Both image itself and the container */
+
+nav.navbar.toggled {
+  background-color: #121212; /* Or whatever dark color you prefer */
+}
+
 #profilePic:hover {
   filter: brightness(107%);
   transition: all 0.3s ease;
@@ -330,17 +337,81 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   );
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
-  margin-bottom: 16px;
+  margin-top: 20px;
+  margin-bottom: 50px;
   display: inline-block;
 }
 .banner h1 {
-  font-size: 65px;
+  font-size: 45px;
   font-weight: 700;
   letter-spacing: 0.8px;
   line-height: 1;
 
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   display: block;
+  position: relative;
+}
+
+.header-container {
+  position: relative; /* Context for absolute positioning */
+}
+
+.header-with-rotation {
+  position: relative; /* Establishes a positioning context for absolutely positioned elements inside */
+  display: block;
+}
+
+.txt-rotate {
+  position: absolute;
+  top: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  left: 0;
+}
+
+.wrap {
+  display: inline-block; /* Allows the span to be sized by its content */
+  line-height: normal;
+}
+
+@media (max-width: 430px) {
+  /* Mobile devices adjustment such as iphone 14 pro max */
+
+  .header-container {
+    margin-bottom: 12px;
+  }
+
+  .banner {
+    padding: 160px 0 50px 0; /* Reduced padding */
+  }
+
+  .banner h1 {
+    font-size: 35px; /* Smaller font size for mobile */
+    margin-bottom: 10px;
+  }
+  .txt-rotate {
+    display: block;
+    white-space: normal; /* Allows text to wrap */
+    line-height: 1.2;
+  }
+
+  .header-with-rotation {
+    line-height: 1.2;
+    margin-top: 1rem;
+  }
+
+  .banner p {
+    padding-top: 1rem;
+  }
+}
+
+.AboutMeSection {
+  margin-top: 4rem;
+  /* border: black 5px solid; */
+  padding: 2rem;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  display: inline-block;
 }
 
 .banner p {
@@ -565,8 +636,12 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   padding: 120px 0;
   /* z-index: -1; */
   background-image: url('./assets/img/banner-bg.png');
-  position: relative;
-  /* background-color: black; */
+  background-position: top left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .qna h2 {
