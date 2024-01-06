@@ -123,6 +123,11 @@ p.danger {
 /************ Navbar Css ************/
 
 /* Profile pic hover affect - Both image itself and the container */
+
+nav.navbar.toggled {
+  background-color: #121212; /* Or whatever dark color you prefer */
+}
+
 #profilePic:hover {
   filter: brightness(107%);
   transition: all 0.3s ease;
@@ -321,7 +326,8 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   );
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
-  margin-bottom: 16px;
+  margin-top: 20px;
+  margin-bottom: 50px;
   display: inline-block;
 }
 .banner h1 {
@@ -359,6 +365,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 @media (max-width: 430px) {
   /* Mobile devices adjustment such as iphone 14 pro max */
+
   .header-container {
     margin-bottom: 12px;
   }
@@ -381,12 +388,19 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
     line-height: 1.2;
     margin-top: 1rem;
   }
+
+  .banner p {
+    padding-top: 1rem;
+  }
 }
 
 .AboutMeSection {
-  margin-top: 5rem;
+  margin-top: 4rem;
   /* border: black 5px solid; */
   padding: 2rem;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  display: inline-block;
 }
 
 .banner p {
@@ -611,8 +625,12 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   padding: 120px 0;
   /* z-index: -1; */
   background-image: url('./assets/img/banner-bg.png');
-  position: relative;
-  /* background-color: black; */
+  background-position: top left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .qna h2 {
