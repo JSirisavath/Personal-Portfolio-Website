@@ -40,8 +40,18 @@ body {
 
 /* Scrollbar styles */
 
+/* Styling for Webkit browsers (Chrome, Safari, Edge) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers */
+}
+
+.no-scrollbar {
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
 *::-webkit-scrollbar {
-  width: 10px; /* Adjust the width of the scrollbar */
+  width: 1.2px; /* Adjust the width of the scrollbar */
+  height: 1px;
 }
 
 *::-webkit-scrollbar-track {
@@ -60,6 +70,7 @@ body {
 /* Styling for Firefox */
 * {
   scrollbar-width: thin;
+
   scrollbar-color: rgba(128, 128, 128, 0.5) rgba(255, 255, 255, 0.1);
 }
 

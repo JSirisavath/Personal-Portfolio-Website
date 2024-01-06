@@ -73,7 +73,7 @@ export const Contact = () => {
             <img src={contactImg} alt="Contact Me" />
           </Col>
           <Col md={6}>
-            <h2>Get In Touch!</h2>
+            <h2>Contact Me!</h2>
             {/* get in touch form */}
             <form onSubmit={handleSubmit}>
               <Row>
