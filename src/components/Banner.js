@@ -6,7 +6,7 @@ import { ArrowRightCircle } from 'react-bootstrap-icons';
 import headerImg from '../assets/img/header-img.svg';
 
 // Use state and Use Effect hooks to store the "state" of the animation typing text
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 // Animate CSS
 import 'animate.css';
@@ -106,7 +106,7 @@ export const Banner = () => {
                     <span className="tagline">Welcome to my Portfolio!</span>
                     <h1 className="header-with-rotation">
                       {`Hi, I'm Jerry Sirisavath,  `}
-                      <span className="txt-rotate" dataPeriod="1000">
+                      <span className="txt-rotate" dataperiod="1000">
                         <span className="wrap"> {text}</span>
                       </span>
                     </h1>
