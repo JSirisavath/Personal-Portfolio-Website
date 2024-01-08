@@ -7,6 +7,7 @@ import {
   collaborativeProjects,
   classroomProjects,
 } from '../personalProjects/personalProjectsData';
+import { Container, Row, Col } from 'react-bootstrap';
 
 // All projects combined
 const allPersonalProjects = [
@@ -25,12 +26,19 @@ export const ProjectDetail = () => {
 
   // If there is a specific project found from the ID, then render that project details (Image, description, videos, GH link, etc), else say project not found
   return specificProject ? (
-    <div>
-      <h2>{specificProject.title}</h2>
-      <img src={specificProject.imgUrl} alt={specificProject.title} />
-      <p>{specificProject.description}</p>
-    </div>
+    <section className="projectDetailPage">
+      <Container>
+        <Row className="align-items-center">
+          <Col xs={12} md={6} xl={7}>
+            <h2>{specificProject.title}</h2>
+            <img src={specificProject.imgUrl} alt={specificProject.title} />
+            <p>{specificProject.description}</p>
+          </Col>
+        </Row>
+      </Container>
+    </section>
   ) : (
+    // Else return project not found page
     <div>Project Not Found! </div>
   );
 };
