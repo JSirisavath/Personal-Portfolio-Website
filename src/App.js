@@ -60,7 +60,6 @@ function App() {
         <PurpleLine appRef={appRef} />
         {/* Custom NavBar link */}
         <NavBar appRef={appRef} />
-        {/* Banner with the space animation and about me section. Also includes the "space" background */}
 
         <Routes>
           {/* Home page routes */}
@@ -68,6 +67,7 @@ function App() {
             path="/"
             element={
               <>
+                {/* Banner with the space animation and about me section. Also includes the "space" background */}
                 <Banner />
                 {/* Skills tab */}
                 <Skills />
@@ -76,9 +76,6 @@ function App() {
                 <QnA />
                 {/* Contact form using node mailer and express library. Work in server.js and contact.js for client side */}
                 <Contact />
-
-                {/* Footer with copy right info and icons that was used from Icon8 */}
-                <Footer />
               </>
             }
           />
@@ -86,6 +83,8 @@ function App() {
           {/* Handle routing for projects and projects own individual page that has their details. This is using the ID for that project */}
           <Route path="/projects/:id" element={<ProjectDetail />} />
         </Routes>
+        {/* Footer with copy right info and icons that was used from Icon8 */}
+        <Footer />
       </div>
     </Router>
   );

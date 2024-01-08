@@ -7,6 +7,7 @@ import projImg1 from '../assets/img/project-img1.png';
 import projImg2 from '../assets/img/project-img2.png';
 import projImg3 from '../assets/img/project-img3.png';
 
+import TestingVid from '../assets/personalProjectVideoDemos/TestingVideos/TestingVid1.mp4';
 // Individual Projects
 export const individualProjects = [
   // Each projects has id, title, description, and imgURL
@@ -15,36 +16,42 @@ export const individualProjects = [
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg1,
+    video: 'video URL or embedded video',
   },
   {
     id: 2,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg2,
+    video: TestingVid,
   },
   {
     id: 3,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg3,
+    video: 'video URL or embedded video',
   },
   {
     id: 4,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg1,
+    video: 'video URL or embedded video',
   },
   {
     id: 5,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg2,
+    video: 'video URL or embedded video',
   },
   {
     id: 6,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg3,
+    video: 'video URL or embedded video',
   },
 ];
 
@@ -56,36 +63,42 @@ export const collaborativeProjects = [
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg1,
+    video: 'video URL or embedded video',
   },
   {
     id: 2,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg2,
+    video: 'video URL or embedded video',
   },
   {
     id: 3,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg3,
+    video: 'video URL or embedded video',
   },
   {
     id: 4,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg1,
+    video: 'video URL or embedded video',
   },
   {
     id: 5,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg2,
+    video: 'video URL or embedded video',
   },
   {
     id: 6,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg3,
+    video: 'video URL or embedded video',
   },
 ];
 
@@ -97,35 +110,41 @@ export const classroomProjects = [
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg1,
+    video: 'video URL or embedded video',
   },
   {
     id: 2,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg2,
+    video: 'video URL or embedded video',
   },
   {
     id: 3,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg3,
+    video: 'video URL or embedded video',
   },
   {
     id: 4,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg1,
+    video: 'video URL or embedded video',
   },
   {
     id: 5,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg2,
+    video: 'video URL or embedded video',
   },
   {
     id: 6,
     title: 'Business Startup',
     description: 'Design & Development',
     imgUrl: projImg3,
+    video: 'video URL or embedded video',
   },
 ];

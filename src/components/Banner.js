@@ -19,7 +19,7 @@ export const Banner = () => {
   // Text to rotate
   const toRotate = [
     'Hello World!',
-    'I am interested in ...',
+    "Areas I'm interested are ...",
     'Web Developer',
     'Java Developer',
     'JavaScript Developer',

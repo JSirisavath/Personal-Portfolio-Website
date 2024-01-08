@@ -7,7 +7,7 @@ import {
   collaborativeProjects,
   classroomProjects,
 } from '../personalProjects/personalProjectsData';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Ratio } from 'react-bootstrap';
 
 // All projects combined
 const allPersonalProjects = [
@@ -28,11 +28,27 @@ export const ProjectDetail = () => {
   return specificProject ? (
     <section className="projectDetailPage">
       <Container>
-        <Row className="align-items-center">
-          <Col xs={12} md={6} xl={7}>
-            <h2>{specificProject.title}</h2>
-            <img src={specificProject.imgUrl} alt={specificProject.title} />
-            <p>{specificProject.description}</p>
+        <Row className="align-items-center justify-content-center">
+          <Col xs={12} className="text-center">
+            <div className="Project_title_container">
+              <div className="Project_title_box">
+                <h2 className="Project_title">{specificProject.title}</h2>
+              </div>
+            </div>
+            {/* Video box outline to showcase the video demoing the project */}
+            {/* video-container */}
+            <div className="video-container">
+              <Ratio aspectRatio="16x9">
+                {/* Video demo showcasing the video */}
+                <iframe
+                  className="video"
+                  src={specificProject.video}
+                  title={specificProject.title}
+                  allowfullscreen
+                ></iframe>
+              </Ratio>
+            </div>
+            {/* <p>{specificProject.description}</p> */}
           </Col>
         </Row>
       </Container>
