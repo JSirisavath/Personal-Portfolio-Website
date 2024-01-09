@@ -9,6 +9,8 @@ import {
 } from '../personalProjects/personalProjectsData';
 import { Container, Row, Col, Ratio } from 'react-bootstrap';
 
+import { useEffect, useState } from 'react';
+
 // All projects combined
 const allPersonalProjects = [
   ...individualProjects,
@@ -18,6 +20,25 @@ const allPersonalProjects = [
 
 export const ProjectDetail = () => {
   let { id } = useParams();
+  // Scroll to top page, because scroll to section maintains the window position from previous linked click
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch your data here and set isLoading to false once it's done
+    // Simulating a fetch call
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Adjust this timeout to your actual data fetching duration
+
+    // Scroll to top after the content is loaded
+    if (!isLoading) {
+      window.scrollTo(0, 0);
+    }
+  }, [isLoading]);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Web app is loading first, so we need a buffer before so we can have the window scroll to the top after loading. Before, it would keep the window scrolled down.
+  }
 
   // Find and go through each project in the all projects array, check if that project's 'id' and converted to string, is strictly equal to the id that is being requested. If true, return it to be that specific project's data.
   const specificProject = allPersonalProjects.find(
@@ -44,7 +65,7 @@ export const ProjectDetail = () => {
                   className="video"
                   src={specificProject.video}
                   title={specificProject.title}
-                  allowfullscreen
+                  allowFullScreen
                 ></iframe>
               </Ratio>
             </div>
