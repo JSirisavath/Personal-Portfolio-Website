@@ -1,21 +1,19 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { MainPage } from './components/MainPage';
+
 import { NavBar } from './components/NavBar';
-import { Banner } from './components/Banner';
+
 import { PurpleLine } from './components/PurpleLine';
 
-import { Skills } from './components/Skills';
-import { Projects } from './components/Projects';
-
 import { ProjectDetail } from './components/ProjectDetail'; // Will be project detail page when users click on a project tab
-
-import { QnA } from './components/QnA';
-
-import { Contact } from './components/Contact';
 
 import { Footer } from './components/Footer';
 
 import React, { useEffect, useRef } from 'react';
+
+import ScrollToSection from './components/ScrollToSection';
 
 // Routing for linking personal projects to a separate page showcasing their details
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -61,24 +59,11 @@ function App() {
         {/* Custom NavBar link */}
         <NavBar appRef={appRef} />
 
+        <ScrollToSection />
+
         <Routes>
           {/* Home page routes */}
-          <Route
-            path="/"
-            element={
-              <>
-                {/* Banner with the space animation and about me section. Also includes the "space" background */}
-                <Banner />
-                {/* Skills tab */}
-                <Skills />
-                <Projects />
-                {/* Question and answer section */}
-                <QnA />
-                {/* Contact form using node mailer and express library. Work in server.js and contact.js for client side */}
-                <Contact />
-              </>
-            }
-          />
+          <Route path="/" element={<MainPage />} />
 
           {/* Handle routing for projects and projects own individual page that has their details. This is using the ID for that project */}
           <Route path="/projects/:id" element={<ProjectDetail />} />

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
+import { Link } from 'react-router-dom';
+
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
@@ -44,34 +46,6 @@ export const NavBar = ({ appRef }) => {
     };
   }, [appRef]);
 
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  };
-
-  // Handling navlink clicks for smooth behavior
-
-  const handleNavLinksClick = (event, sectionID) => {
-    // Prevent default anchor link behavior
-    event.preventDefault();
-
-    // Update active link state
-    onUpdateActiveLink(sectionID);
-
-    // Scroll to that section users clicked on
-    scrollToSection(sectionID);
-  };
-
-  const scrollToSection = (sectionID) => {
-    const usersClickedSection = document.getElementById(sectionID);
-    // Smooth scroll behavior
-    if (usersClickedSection) {
-      usersClickedSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
-  };
-
   // Handle 'Let's connect' button to open my meeting scheduler for users
   const handleClick = () => {
     window.open('https://calendly.com/jsirisavath', '_blank');
@@ -97,57 +71,63 @@ export const NavBar = ({ appRef }) => {
           <Nav className="ms-auto">
             {/* Links to skills, badging projects,and homepage section */}
             {/* Home link */}
-            {/* <Nav.Link
-              href="#home"
+
+            <Nav.Link
+              as={Link}
+              to="/#home"
               className={
                 activeLink === 'home' ? 'active navbar-link' : 'navbar-link'
               }
               //   When the link has been clicked, update to the home page
-              onClick={(e) => handleNavLinksClick(e, 'home')}
+              onClick={() => setActiveLink('home')}
             >
               Home
-            </Nav.Link> */}
+            </Nav.Link>
 
             {/* Skills link */}
             <Nav.Link
-              href="#skills"
+              as={Link}
+              to="/#skills"
               className={
                 activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'
               }
-              onClick={(e) => handleNavLinksClick(e, 'skills')}
+              onClick={() => setActiveLink('skills')}
             >
               Skills
             </Nav.Link>
 
             {/* Projects link */}
             <Nav.Link
-              href="#projects"
+              as={Link}
+              to="/#projects"
               className={
                 activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'
               }
-              onClick={(e) => handleNavLinksClick(e, 'projects')}
+              onClick={() => setActiveLink('projects')}
             >
               Projects
             </Nav.Link>
 
             {/* badging link */}
             <Nav.Link
-              href="#badging"
+              as={Link}
+              to="/#badging"
               className={
                 activeLink === 'badging' ? 'active navbar-link' : 'navbar-link'
               }
-              onClick={(e) => handleNavLinksClick(e, 'badging')}
+              onClick={(e) => setActiveLink('badging')}
             >
               Badging
             </Nav.Link>
 
             {/* QNA */}
             <Nav.Link
-              href="#QNA"
+              as={Link}
+              to="/#QNA"
               className={
                 activeLink === 'QNA' ? 'active navbar-link' : 'navbar-link'
               }
-              onClick={(e) => handleNavLinksClick(e, 'QNA')}
+              onClick={() => setActiveLink('QNA')}
             >
               QNA
             </Nav.Link>
