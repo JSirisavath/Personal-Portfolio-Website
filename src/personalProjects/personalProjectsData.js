@@ -21,7 +21,8 @@ export const individualProjects = [
   {
     id: 2,
     title: 'Business Startup',
-    description: 'Design & Development',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat. Aliquet porttitor lacus luctus accumsan. Sapien eget mi proin sed libero. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Ut sem viverra aliquet eget sit. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Ac orci phasellus egestas tellus rutrum. Tempor nec feugiat nisl pretium. Risus ultricies tristique nulla aliquet enim tortor at. Eu lobortis elementum nibh tellus molestie nunc non blandit massa. Placerat duis ultricies lacus sed turpis tincidunt id. Fames ac turpis egestas integer eget aliquet nibh. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend.',
     imgUrl: projImg2,
     video: TestingVid,
   },

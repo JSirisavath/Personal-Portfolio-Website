@@ -635,7 +635,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 /* Project details page styles */
 .projectDetailPage {
   margin-top: 0;
-  padding: 260px 0 300px 0;
+  padding: 240px 0 300px 0;
   background-image: url('./assets/img/DALLESpaceAmbientBg.png');
   background-position: top center;
   background-size: cover;
@@ -647,8 +647,25 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 /* Project details page - video box outline */
 
-.Project_title_box {
+.Project_title_container {
   margin-bottom: 2rem;
+}
+
+.Project_title_box {
+  /* margin-bottom: 2rem; */
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 17px 16px;
+  background: linear-gradient(
+    90.21deg,
+    rgba(170, 54, 124, 0.5) -5.91%,
+    rgba(74, 47, 189, 0.5) 111.58%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  /* margin-top: 20px; */
+  /* margin-bottom: 40px; */
+  display: inline-block;
 }
 
 .video-container {
@@ -660,6 +677,44 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 /* Project Video style */
 .ratio {
   width: 100%;
+}
+
+/* Project detail description styles */
+.descriptionContainer {
+  padding-bottom: 25px;
+}
+
+#projectDetailDescription {
+  padding-bottom: 1.5rem;
+  color: #b8b8b8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px auto 30px auto;
+  text-align: center;
+  width: 76%;
+  flex-wrap: wrap;
+}
+
+/* Github button container */
+.ghButtonContainer {
+  margin-top: 2rem;
+  padding: 22px 16px;
+  position: relative;
+}
+
+button.Gh-project-btn {
+  font-weight: 700;
+  padding: 14px 48px;
+  font-size: 18px;
+  border: transparent;
+  background-color: #303030;
+  transition: 0.4 ease-in-out;
+}
+
+button.Gh-project-btn:hover {
+  background-color: #000;
+  font-size: 20px;
 }
 
 /* Media query for tablets */

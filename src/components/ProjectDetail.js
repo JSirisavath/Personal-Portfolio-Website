@@ -1,6 +1,12 @@
 // The 'useParams' hook from router dom helps retrieve the 'id' parameter from the url, and then fetch or determine the specifics of project details to display
 import { useParams } from 'react-router-dom';
 
+// Button to direct users to GH Source code link
+import Button from 'react-bootstrap/Button';
+
+// GH logo for btn
+import GithubLogo from '../assets/img/nav-icon2.svg';
+
 // Imports personal projects data
 import {
   individualProjects,
@@ -53,9 +59,15 @@ export const ProjectDetail = () => {
           <Col xs={12} className="text-center">
             <div className="Project_title_container">
               <div className="Project_title_box">
+                {/* Project Title */}
                 <h2 className="Project_title">{specificProject.title}</h2>
               </div>
             </div>
+            {/* Project detail description */}
+            <div className="descriptionContainer">
+              <p id="projectDetailDescription">{specificProject.description}</p>
+            </div>
+
             {/* Video box outline to showcase the video demoing the project */}
             {/* video-container */}
             <div className="video-container">
@@ -69,7 +81,40 @@ export const ProjectDetail = () => {
                 ></iframe>
               </Ratio>
             </div>
-            {/* <p>{specificProject.description}</p> */}
+
+            {/* Tech Stacks Icons (These icons will show what tech stacks I've used for this project. Tech stack icons will be stored and retrieved based on  project details) */}
+
+            <div className="techStacksContainer">
+              <div className="techStacksRow">
+                {/* Tech stacks calls are here for that project */}
+              </div>
+            </div>
+
+            {/* Link to Github  source code button */}
+            <div className="ghButtonContainer">
+              <div className="d-grid gap-2">
+                <Button
+                  className="Gh-project-btn"
+                  variant="secondary"
+                  size="lg"
+                >
+                  <img
+                    id="GHLogoBtn"
+                    src={GithubLogo}
+                    alt="GH-Logo-For-Btn"
+                    style={{
+                      height: '25px',
+                      marginLeft: '10px',
+                      width: 'auto',
+                      marginRight: '1rem',
+                    }}
+                  />
+                  Github Repo Link
+                </Button>
+              </div>
+            </div>
+
+            {/* If there is a web-link, show another button here that directs users to that link */}
           </Col>
         </Row>
       </Container>
