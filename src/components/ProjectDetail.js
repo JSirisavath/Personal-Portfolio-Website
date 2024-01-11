@@ -73,12 +73,15 @@ export const ProjectDetail = () => {
             <div className="video-container">
               <Ratio aspectRatio="16x9">
                 {/* Video demo showcasing the video */}
-                <iframe
+                <video
                   className="video"
                   src={specificProject.video}
                   title={specificProject.title}
+                  autoPlay={false}
+                  controls={true}
                   allowFullScreen
-                ></iframe>
+                  muted
+                ></video>
               </Ratio>
             </div>
 
@@ -89,6 +92,8 @@ export const ProjectDetail = () => {
                 {/* Tech stacks calls are here for that project */}
               </div>
             </div>
+
+            {/* Image carousel showcasing the project and their demo images */}
 
             {/* Link to Github  source code button */}
             <div className="ghButtonContainer">
