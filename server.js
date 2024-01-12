@@ -1,64 +1,24 @@
+// Main server file
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const nodemailer = require('nodemailer');
-require('dotenv').config();
-
 const port = process.env.PORT || 3001;
+const contactRoutes = require('./routes/contact'); // Email route
+const db = require('./db/mongoDBConnection'); // Mongo db connection
 
-// server used to send emails
+// Import db Models (Different projects categories)
+const IndividualProjects = require('./models/individualProjects');
+const CollaborativeProjects = require('./models/collaborativeProjects');
+const ClassroomProjects = require('./models/classroomProjects');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+// Home page
 app.use('/', router);
+
+// contact route
+// All contact routes will be prefixed with /api. So any request to my server that starts with '/api', the request will be directed to contact routes router for handling, which is for email sending
+app.use('/api', contactRoutes);
+
 app.listen(port, () => console.log('Server Running'));
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
-
-const contactEmail = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.APP_PASS,
-  },
-});
-
-// Verify it is running
-contactEmail.verify((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Ready to Send');
-  }
-});
-
-// Make a post request
-router.post('/contact', (req, res) => {
-  // Combine users first name and last name
-  const name = req.body.firstName + '.' + req.body.lastName;
-  const email = req.body.email;
-  const message = req.body.message;
-  const phone = req.body.phone;
-  const mail = {
-    from: name,
-    to: 'Jsirisavath123@gmail.com',
-    subject: 'Contact Form Submission - Portfolio',
-    html: `<p>Name: ${name}</p>
-           <p>Email: ${email}</p>
-           <p>Phone: ${phone}</p>
-           <p>Message: ${message}</p>`,
-  };
-
-  // Send back the error
-  contactEmail.sendMail(mail, (error, info) => {
-    if (error) {
-      console.error('Error sending email: ', error);
-      res.status(500).json({ message: 'Error sending email', error: error });
-    } else {
-      console.log('Email sent: ', info.response);
-      res
-        .status(200)
-        .json({ code: 200, status: 'Message Sent', response: info.response });
-    }
-  });
-});
