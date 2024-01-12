@@ -10,36 +10,6 @@ const ClassroomProjects = require('../models/classroomProjects');
 const collaborativeProjects = require('../models/collaborativeProjects');
 const classroomProjects = require('../models/classroomProjects');
 
-// Route to add a new individual project
-router.post('/addIndividualProject', (req, res) => {
-  const newIndividualProject = new IndividualProjects(req.body);
-
-  newIndividualProject
-    .save()
-    .then((project) => res.status(201).json(project))
-    .catch((err) => res.status(400).json({ error: err.message }));
-});
-
-// Route to add a new collaborative project
-router.post('/addCollaborativeProject', (req, res) => {
-  const newCollaborativeProject = new CollaborativeProjects(req.body);
-
-  newCollaborativeProject
-    .save()
-    .then((project) => res.status(201).json(project))
-    .catch((err) => res.status(400).json({ error: err.message }));
-});
-
-// Route to add a new classroom project
-router.post('/addClassroomProject', (req, res) => {
-  const newClassroomProject = new ClassroomProjects(req.body);
-
-  newClassroomProject
-    .save()
-    .then((project) => res.status(201).json(project))
-    .catch((err) => res.status(400).json({ error: err.message }));
-});
-
 // Get all projects data
 router.get('/projects', async (req, res) => {
   try {

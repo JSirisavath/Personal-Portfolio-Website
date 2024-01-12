@@ -6,6 +6,7 @@ const collaborativeProjectSchematics = new mongoose.Schema({
   imgUrl: String,
   video: String,
   imagesShowcase: [String],
+  collaboratorsGHURL: [String],
 });
 
 module.exports = mongoose.model(
