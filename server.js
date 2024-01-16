@@ -2,12 +2,12 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8080;
 const contactRoutes = require('./routes/contact'); // Email route
 const projectRoutes = require('./routes/projects'); // Project route
 const db = require('./db/mongoDBConnection'); // Mongo db connection
-
 const app = express();
+const path = require('path');
 app.use(cors());
 app.use(express.json());
 // Home page
@@ -19,5 +19,13 @@ app.use('/api', contactRoutes);
 
 // Project route
 app.use('/api/projects', projectRoutes);
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Cath any requests that doesn't match any url patterns
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/build/index.html'));
+});
 
 app.listen(port, () => console.log('Server Running'));

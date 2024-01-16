@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Expense Tracker App",
+    "description": "This is a nice introduction for how to handle data state for user's expenses. This app is for showcasing purpose and where I build a simple expense tracker using the React framework. There are currently no backend involved in this app as it's SPA (Single-Page-Application). We used React's amazing Javascript logic & in line HTML and some basic CSS.",
+    "imgUrl": "",
+    "video": "",
+    "imagesShowcase": []
+  },
+  {}
+]
