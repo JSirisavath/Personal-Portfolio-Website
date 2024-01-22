@@ -39,9 +39,12 @@ router.get('/individual', async (req, res) => {
     // All individual projects
     const allIndividualProjects = await IndividualProjects.find();
 
+    console.log('Sending individual projects:', allIndividualProjects);
+
     // Response from all individual projects data
     res.json(allIndividualProjects);
   } catch (err) {
+    console.error('Error fetching individual projects: ', err);
     res.status(500).json({ message: err.message });
   }
 });

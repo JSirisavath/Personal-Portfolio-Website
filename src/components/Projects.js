@@ -18,6 +18,8 @@ import TrackVisibility from 'react-on-screen';
 
 import { useEffect, useState } from 'react';
 
+import { getAPIBaseURL } from '../config';
+
 export const Projects = () => {
   // Projects empty array use state
   const [individualProjects, setIndividualProjects] = useState([]);
@@ -28,61 +30,70 @@ export const Projects = () => {
     // Fetch the individual projects, where we target the routes URL in projects.js
     const fetchProjectsData = async () => {
       try {
+        const baseURL = getAPIBaseURL();
+
         // APP uses "/api/projects/individual" and is being handled by projects.js in routes folder
         const responseForIndividualProject = await fetch(
-          '/api/projects/individual'
+          `${baseURL}/api/projects/individual`
         );
 
         // Give status code if HTTP error
         if (!responseForIndividualProject.ok) {
+          const text = await responseForIndividualProject.text(); // Read response as text
+
+          console.error(`Error response body: ${text}`);
+
           throw new Error(
-            `HTTP error to fetch Individual Projects, Status: ${responseForIndividualProject.status}`
+            `HTTP error to fetch Individual Projects, Status: ${responseForIndividualProject.status}, Body: ${text}`
           );
         }
 
         // Json data to Javascript object
         const individualProjectData = await responseForIndividualProject.json();
 
+        console.log(individualProjectData);
+
         // Set individual project state to display
         setIndividualProjects(individualProjectData);
 
-        // await the execution until Fetch for Collaborative project is returned
-        const responseForCollabProjects = await fetch(
-          '/api/projects/collaborative'
-        );
+        // // await the execution until Fetch for Collaborative project is returned
+        // const responseForCollabProjects = await fetch(
+        //   '/api/projects/collaborative'
+        // );
 
-        if (!responseForCollabProjects.ok) {
-          throw new Error(
-            `HTTP error to fetch Collaborative projects, Status: ${responseForCollabProjects.status}`
-          );
-        }
+        // if (!responseForCollabProjects.ok) {
+        //   throw new Error(
+        //     `HTTP error to fetch Collaborative projects, Status: ${responseForCollabProjects.status}`
+        //   );
+        // }
 
-        // Collab. response convert to Javascript object
-        const collaborativeProjectData = await responseForCollabProjects.json();
+        // // Collab. response convert to Javascript object
+        // const collaborativeProjectData = await responseForCollabProjects.json();
 
-        // Set collaborative project state to display
-        setCollaborativeProjects(collaborativeProjectData);
+        // // Set collaborative project state to display
+        // setCollaborativeProjects(collaborativeProjectData);
 
-        // Class room projects
-        const responseForClassroomProject = await fetch(
-          '/api/projects/classroom'
-        );
+        // // Class room projects
+        // const responseForClassroomProject = await fetch(
+        //   '/api/projects/classroom'
+        // );
 
-        if (!responseForClassroomProject.ok) {
-          throw new Error(
-            `HTTP error to fetch classroom projects, Status ${responseForClassroomProject.status}`
-          );
-        }
+        // if (!responseForClassroomProject.ok) {
+        //   throw new Error(
+        //     `HTTP error to fetch classroom projects, Status ${responseForClassroomProject.status}`
+        //   );
+        // }
 
-        // Json to objects
-        const classroomProjectsData = await responseForClassroomProject.json();
+        // // Json to objects
+        // const classroomProjectsData = await responseForClassroomProject.json();
 
-        // Classroom project state
-        setClassroomProjects(classroomProjectsData);
-      } catch (err) {
+        // // Classroom project state
+        // setClassroomProjects(classroomProjectsData);
+      } catch (error) {
         // Error handling
         // TODO make a component to display error getting project data
-        console.error('Error fetching project data:', err);
+        console.log(error);
+        console.error('Error fetching:', error);
       }
     };
 
