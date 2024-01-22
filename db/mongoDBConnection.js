@@ -16,3 +16,5 @@ db.once('open', function () {
 });
 
 // NOTE: Images will be stored in google cloud storage and then retrieved by project ID. When images are retrieved, they are image strings
+
+module.exports = db;

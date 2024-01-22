@@ -26,3 +26,5 @@ yarn-error.log*
 .env
 
 app.yaml
+
+mongo_data/

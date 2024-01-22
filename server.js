@@ -5,7 +5,7 @@ const cors = require('cors');
 const port = process.env.PORT || 8080;
 const contactRoutes = require('./routes/contact'); // Email route
 const projectRoutes = require('./routes/projects'); // Project route
-const db = require('./db/mongoDBConnection'); // Mongo db connection
+require('./db/mongoDBConnection'); // Mongo db connection required for server to connect to mongo db
 const app = express();
 const path = require('path');
 app.use(cors());

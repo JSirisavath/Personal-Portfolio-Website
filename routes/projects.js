@@ -46,7 +46,7 @@ router.get('/individual', async (req, res) => {
   }
 });
 
-// Get all individual projects
+// Get all collaborative projects
 router.get('/collaborative', async (req, res) => {
   try {
     // All collaborative projects

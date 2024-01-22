@@ -7,13 +7,6 @@ import Nav from 'react-bootstrap/Nav';
 // Project card component
 import { ProjectCard } from './ProjectCard';
 
-// Imports personal projects data
-import {
-  individualProjects,
-  collaborativeProjects,
-  classroomProjects,
-} from '../personalProjects/personalProjectsData';
-
 // Violet blue color circle gradient
 import colorSharp2 from '../assets/img/color-sharp2.png';
 
@@ -23,7 +16,79 @@ import 'animate.css';
 // Track visibility
 import TrackVisibility from 'react-on-screen';
 
+import { useEffect, useState } from 'react';
+
 export const Projects = () => {
+  // Projects empty array use state
+  const [individualProjects, setIndividualProjects] = useState([]);
+  const [collaborativeProjects, setCollaborativeProjects] = useState([]);
+  const [classroomProjects, setClassroomProjects] = useState([]);
+
+  useEffect(() => {
+    // Fetch the individual projects, where we target the routes URL in projects.js
+    const fetchProjectsData = async () => {
+      try {
+        // APP uses "/api/projects/individual" and is being handled by projects.js in routes folder
+        const responseForIndividualProject = await fetch(
+          '/api/projects/individual'
+        );
+
+        // Give status code if HTTP error
+        if (!responseForIndividualProject.ok) {
+          throw new Error(
+            `HTTP error to fetch Individual Projects, Status: ${responseForIndividualProject.status}`
+          );
+        }
+
+        // Json data to Javascript object
+        const individualProjectData = await responseForIndividualProject.json();
+
+        // Set individual project state to display
+        setIndividualProjects(individualProjectData);
+
+        // await the execution until Fetch for Collaborative project is returned
+        const responseForCollabProjects = await fetch(
+          '/api/projects/collaborative'
+        );
+
+        if (!responseForCollabProjects.ok) {
+          throw new Error(
+            `HTTP error to fetch Collaborative projects, Status: ${responseForCollabProjects.status}`
+          );
+        }
+
+        // Collab. response convert to Javascript object
+        const collaborativeProjectData = await responseForCollabProjects.json();
+
+        // Set collaborative project state to display
+        setCollaborativeProjects(collaborativeProjectData);
+
+        // Class room projects
+        const responseForClassroomProject = await fetch(
+          '/api/projects/classroom'
+        );
+
+        if (!responseForClassroomProject.ok) {
+          throw new Error(
+            `HTTP error to fetch classroom projects, Status ${responseForClassroomProject.status}`
+          );
+        }
+
+        // Json to objects
+        const classroomProjectsData = await responseForClassroomProject.json();
+
+        // Classroom project state
+        setClassroomProjects(classroomProjectsData);
+      } catch (err) {
+        // Error handling
+        // TODO make a component to display error getting project data
+        console.error('Error fetching project data:', err);
+      }
+    };
+
+    // Call fetching data
+    fetchProjectsData();
+  }, []);
   return (
     <section className="project" id="projects">
       <Container>
