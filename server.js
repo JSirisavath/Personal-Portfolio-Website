@@ -20,7 +20,7 @@ app.use('/api', contactRoutes);
 // Project route
 app.use('/api/projects', projectRoutes);
 
-// Serve static files from the React app
+// Serve static files from the build folder. For deploying app and want express to serve the production build of the React app.
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Cath any requests that doesn't match any url patterns
