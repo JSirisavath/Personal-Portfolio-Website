@@ -51,44 +51,44 @@ export const Projects = () => {
         // Json data to Javascript object
         const individualProjectData = await responseForIndividualProject.json();
 
-        console.log(individualProjectData);
+        // console.log(individualProjectData);
 
         // Set individual project state to display
         setIndividualProjects(individualProjectData);
 
-        // // await the execution until Fetch for Collaborative project is returned
-        // const responseForCollabProjects = await fetch(
-        //   '/api/projects/collaborative'
-        // );
+        // await the execution until Fetch for Collaborative project is returned
+        const responseForCollabProjects = await fetch(
+          `${baseURL}/api/projects/collaborative`
+        );
 
-        // if (!responseForCollabProjects.ok) {
-        //   throw new Error(
-        //     `HTTP error to fetch Collaborative projects, Status: ${responseForCollabProjects.status}`
-        //   );
-        // }
+        if (!responseForCollabProjects.ok) {
+          throw new Error(
+            `HTTP error to fetch Collaborative projects, Status: ${responseForCollabProjects.status}`
+          );
+        }
 
-        // // Collab. response convert to Javascript object
-        // const collaborativeProjectData = await responseForCollabProjects.json();
+        // Collab. response convert to Javascript object
+        const collaborativeProjectData = await responseForCollabProjects.json();
 
-        // // Set collaborative project state to display
-        // setCollaborativeProjects(collaborativeProjectData);
+        // Set collaborative project state to display
+        setCollaborativeProjects(collaborativeProjectData);
 
-        // // Class room projects
-        // const responseForClassroomProject = await fetch(
-        //   '/api/projects/classroom'
-        // );
+        // Class room projects
+        const responseForClassroomProject = await fetch(
+          `${baseURL}/api/projects/classroom`
+        );
 
-        // if (!responseForClassroomProject.ok) {
-        //   throw new Error(
-        //     `HTTP error to fetch classroom projects, Status ${responseForClassroomProject.status}`
-        //   );
-        // }
+        if (!responseForClassroomProject.ok) {
+          throw new Error(
+            `HTTP error to fetch classroom projects, Status ${responseForClassroomProject.status}`
+          );
+        }
 
-        // // Json to objects
-        // const classroomProjectsData = await responseForClassroomProject.json();
+        // Json to objects
+        const classroomProjectsData = await responseForClassroomProject.json();
 
-        // // Classroom project state
-        // setClassroomProjects(classroomProjectsData);
+        // Classroom project state
+        setClassroomProjects(classroomProjectsData);
       } catch (error) {
         // Error handling
         // TODO make a component to display error getting project data
@@ -137,8 +137,15 @@ export const Projects = () => {
               <TabContent>
                 <Tab.Pane eventKey="first">
                   <Row>
-                    {individualProjects.map((project, index) => {
-                      return <ProjectCard key={index} {...project} />;
+                    {individualProjects.map((project) => {
+                      // console.log('project data: ', project);
+                      return (
+                        <ProjectCard
+                          key={project._id}
+                          id={project._id}
+                          {...project}
+                        />
+                      );
                     })}
                   </Row>
                 </Tab.Pane>

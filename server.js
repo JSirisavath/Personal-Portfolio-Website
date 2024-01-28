@@ -20,12 +20,12 @@ app.use('/api', contactRoutes);
 // Project route
 app.use('/api/projects', projectRoutes);
 
+app.listen(port, () => console.log(`Server Running on ${port}`));
+
 // Serve static files from the build folder. For deploying app and want express to serve the production build of the React app.
 app.use(express.static(path.join(__dirname, 'build')));
 
-// Cath any requests that doesn't match any url patterns
+// Catch any requests that doesn't match any url patterns
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/build/index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-
-app.listen(port, () => console.log('Server Running'));

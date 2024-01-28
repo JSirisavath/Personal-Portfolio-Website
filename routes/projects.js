@@ -1,4 +1,4 @@
-// Routing for projects
+// Routing for projects and any reqs for projects, these will grab those projects and return them
 
 const express = require('express');
 const router = express.Router();
@@ -7,8 +7,7 @@ const router = express.Router();
 const IndividualProjects = require('../models/individualProjects');
 const CollaborativeProjects = require('../models/collaborativeProjects');
 const ClassroomProjects = require('../models/classroomProjects');
-const collaborativeProjects = require('../models/collaborativeProjects');
-const classroomProjects = require('../models/classroomProjects');
+const mongoose = require('mongoose');
 
 // Get all projects data
 router.get('/projects', async (req, res) => {
@@ -39,7 +38,7 @@ router.get('/individual', async (req, res) => {
     // All individual projects
     const allIndividualProjects = await IndividualProjects.find();
 
-    console.log('Sending individual projects:', allIndividualProjects);
+    // console.log('Sending individual projects:', allIndividualProjects);
 
     // Response from all individual projects data
     res.json(allIndividualProjects);
@@ -75,53 +74,37 @@ router.get('/classroom', async (req, res) => {
   }
 });
 
-// Get a specific project data by id
+// Specific project
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
 
-// Get a specific individual project
-router.get('/individual/:id', async (req, res) => {
-  try {
-    // find that specific requested project by te id
-    const requestedIndividualProject = await IndividualProjects.findById(
-      req.params.id
-    );
-
-    // TODO: Need to implement a redirect if project is not found
-    if (!requestedIndividualProject)
-      return res.status(404).json({ message: 'Project not found' });
-    //  Json res
-    res.json(requestedIndividualProject);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ message: 'Invalid project ID!' });
   }
-});
-
-// Get specific collaborative project
-router.get(async (req, res) => {
   try {
-    const requestedCollaborativeProject = await collaborativeProjects.findById(
-      req.params.id
-    );
+    // Check individual projects first
+    let project = await IndividualProjects.findById(req.params.id);
 
-    // TODO: Need to implement a redirect if project is not found
-    if (!requestedCollaborativeProject)
-      return res.status(404).json({ message: 'Project not found' });
+    // If not individual projects, then find collaborative
+    if (!project) {
+      project = await CollaborativeProjects.findById(req.params.id);
+    }
 
-    // JSON response for requestedCollaborativeProject
-    res.json(requestedCollaborativeProject);
+    // If not collaborative, then classroom
+    if (!project) {
+      project = await ClassroomProjects.findById(req.params.id);
+    }
+
+    // If not any, then return a response of no project found
+    if (!project) {
+      return res
+        .status(404)
+        .json({ message: 'Unfortunately, project not found.' });
+    }
+    // Return the found project
+    res.json(project);
   } catch (err) {
-    res.status(404).json({ message: err.message });
-  }
-});
-
-// Get specific classroom project
-router.get(async (req, res) => {
-  try {
-    const requestedClassroomProject = classroomProjects.findById(req.params.id);
-
-    if (!requestedClassroomProject)
-      return res.status(404).json('Project not found');
-    res.json(requestedClassroomProject);
-  } catch (err) {
+    console.error('Error fetching individual projects: ', err);
     res.status(500).json({ message: err.message });
   }
 });

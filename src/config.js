@@ -6,5 +6,5 @@ export const getAPIBaseURL = () => {
     return 'http://localhost:8080';
   }
   // Production
-  return '';
+  return 'personal-web-portfolio-js.uc.r.appspot.com ';
 };
