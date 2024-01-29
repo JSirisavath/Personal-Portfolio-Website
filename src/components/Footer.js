@@ -58,6 +58,18 @@ export const Footer = () => {
                 Icons8
               </a>
             </p>
+            <p>
+              <a
+                target="_blank"
+                href="https://icons8.com/icon/tjuIMOXXe1mT/youtube-live"
+              >
+                Live
+              </a>{' '}
+              icon by{' '}
+              <a target="_blank" href="https://icons8.com">
+                Icons8
+              </a>
+            </p>
           </Col>
         </Row>
       </Container>
