@@ -105,7 +105,7 @@ export const ProjectDetail = () => {
                   controls={true}
                   allowFullScreen
                   muted
-                  poster={project.imgUrl}
+                  // poster={project.imgUrl}
                 ></video>
               </Ratio>
             </div>
@@ -113,7 +113,7 @@ export const ProjectDetail = () => {
             {/* Image carousel showcasing the project and their demo images */}
 
             <div className="carousel-image-section">
-              <Carousel data-bs-theme="dark">
+              <Carousel>
                 {projectImages.map((image, index) => (
                   <Carousel.Item key={index} interval={7000}>
                     <img

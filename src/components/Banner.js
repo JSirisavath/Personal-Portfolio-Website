@@ -19,14 +19,16 @@ export const Banner = () => {
   // Text to rotate
   const toRotate = [
     'Hello World!',
-    "Areas I'm interested are ...",
-    'Web Developer',
-    'Java Developer',
-    'JavaScript Developer',
-    'Python Developer',
-    'Reactjs Developer',
-    'Full Stack Developer',
+    'My passions are in...',
+    'Web Development',
+    'Java Development',
+    'JavaScript Development',
+    'Python Development',
+    'Reactjs Development',
+    'Vuejs Development',
+    'Full Stack Development',
     'DevOps',
+    'and many more!',
   ];
   // Loop counter on which text to start first
   const [loopNum, setLoopNum] = useState(0);

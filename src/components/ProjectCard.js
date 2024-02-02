@@ -18,8 +18,9 @@ export const ProjectCard = ({
             style={{ backgroundImage: `url(${imgUrl})` }}
           ></div>
           <div className="proj-content">
+            <div className="tech-stack-header-title">Tech Stacks</div>
             <div className="tech-stack">{techStackTitle}</div>
-            <div className="days-ago">days ago</div>
+
             <h2 className="proj-title">{title}</h2>
             <p className="proj-description">{description}</p>
           </div>

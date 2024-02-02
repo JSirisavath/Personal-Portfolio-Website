@@ -112,8 +112,17 @@ export const Projects = () => {
                     isVisible ? 'animate__animated animate__bounce' : ''
                   }
                 >
-                  <h2>Projects</h2>
-                  <p>Lorem ipsam text example</p>
+                  <h2>Personal Projects</h2>
+                  <p>
+                    Here are a few projects I have made currently that I would
+                    like to showcase. These projects showcase my current skills
+                    and knowledge within a diverse range of different
+                    technologies I have used over the past. Projects are
+                    separated by 3 different categories and are grouped together
+                    by individual, classroom, and collaborative. I will continue
+                    to add more projects as time goes by and update any existing
+                    projects along the way during my development journey!{' '}
+                  </p>
                 </div>
               )}
             </TrackVisibility>
