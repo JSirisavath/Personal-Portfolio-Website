@@ -28,6 +28,9 @@ export const ProjectDetail = () => {
   // Project images
   const [projectImages, setProjectImages] = useState([]);
 
+  // Project contributors if if any
+  const [projectContributors, setProjectContributors] = useState([]);
+
   const baseURL = getAPIBaseURL();
 
   useEffect(() => {
@@ -53,6 +56,8 @@ export const ProjectDetail = () => {
 
           setProjectImages(projectData.imagesShowcase);
           // console.log(projectData.imagesShowcase);
+
+          setProjectContributors(projectData.collaboratorsGHURL);
         })
         .catch((error) => {
           console.error('Error fetching this project!', error);
@@ -61,7 +66,17 @@ export const ProjectDetail = () => {
   }, [baseURL, id]);
 
   if (!project) {
-    return <div>Loading project...</div>;
+    return (
+      <section className="projectDetailPage">
+        <Container>
+          <Row className="align-items-center justify-content-center">
+            <Col xs={12} className="text-center">
+              <h1>No Project Found!</h1>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    );
   }
 
   // If there is a specific project found from the ID, then render that project details (Image, description, videos, GH link, etc), else say project not found
@@ -178,6 +193,20 @@ export const ProjectDetail = () => {
                       />
                       Live Site
                     </Button>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+
+            <div className="ContributorsContainer">
+              {project.collaboratorsGHURL ? (
+                <div className="ghContributorsButtonContainer">
+                  <div className="d-grid gap-2">
+                    {projectContributors.map((contributor, index) => (
+                      <a href={contributor} target="_blank" rel="noreferrer">
+                        {contributor}
+                      </a>
+                    ))}
                   </div>
                 </div>
               ) : null}

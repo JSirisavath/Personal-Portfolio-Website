@@ -164,7 +164,11 @@ export const Projects = () => {
                   Lorem Ipsum
                   <Row>
                     {collaborativeProjects.map((project, index) => (
-                      <ProjectCard key={index} {...project} />
+                      <ProjectCard
+                        key={project._id}
+                        id={project._id}
+                        {...project}
+                      />
                     ))}
                   </Row>
                 </Tab.Pane>
