@@ -131,6 +131,67 @@ p.danger {
   color: red;
 }
 
+/************ Welcome Page CSS ************/
+
+/* Welcome page background video */
+
+.WelcomePage .bg-video-section {
+  /* Video and text section.  Position is relative for elements (text, video, etc.) inside this 'container' are relative to this background video section of the container */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.background-video {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 50%; /* Centers vertically */
+  left: 50%; /* Centers horizontally */
+  transform: translate(-50%, -50%); /* Adjust based on the element's size */
+  color: #fff;
+  text-align: center;
+  /* bac */
+}
+
+/* .welcome-text-section {
+  left: 40%;
+} */
+
+#welcomePageTagline {
+  position: relative;
+  padding-top: 6.25rem;
+  padding-right: 54.688rem;
+  padding-left: 3.125rem;
+  padding-bottom: 15.938rem;
+  text-align: right;
+  font-weight: 500;
+  letter-spacing: 0.113rem;
+  font-size: 5.938rem;
+  margin-top: 1.25rem;
+  margin-bottom: 3.125rem;
+}
+
+@media (max-width: 768px) {
+  #welcomePageTagline {
+    padding-top: 2rem; /* Reduced padding */
+    padding-right: 1.5rem; /* Adjusted for narrower screens */
+    padding-left: 1.5rem;
+    padding-bottom: 5rem; /* Reduced padding */
+    font-size: 2rem; /* Adjusted font size for readability on mobile */
+    text-align: center; /* Optionally center text for mobile */
+  }
+}
+
 /************ Navbar Css ************/
 
 /* Profile pic hover affect - Both image itself and the container */
@@ -159,6 +220,8 @@ nav.navbar {
   top: 0;
   z-index: 9999;
   transition: 0.32s ease-in-out;
+
+  backdrop-filter: blur(11px); /* Blur effect for the background content */
 }
 nav.navbar.scrolled {
   padding: 0px 0;

@@ -15,17 +15,19 @@ export const MainPage = () => {
   useEffect(() => {
     const hash = location.hash.replace('#', '');
     if (hash) {
-      const section = document.getElementById(hash);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
+      setTimeout(() => {
+        const section = document.getElementById(hash);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200); // Delay of 100ms
     }
   }, [location]);
 
   return (
     <>
       {/* Banner with the space animation and about me section. Also includes the "space" background */}
-      <div id="home">
+      <div id="mainHome">
         <Banner />
       </div>
 

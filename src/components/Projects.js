@@ -137,10 +137,10 @@ export const Projects = () => {
                   <Nav.Link eventKey="first">Individual Projects</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="second">Class Room Projects</Nav.Link>
+                  <Nav.Link eventKey="second">Collaborative Projects</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="third">Collaborative Projects</Nav.Link>
+                  <Nav.Link eventKey="third">Class Room Projects</Nav.Link>
                 </Nav.Item>
               </Nav>
               <TabContent>
@@ -161,7 +161,6 @@ export const Projects = () => {
 
                 {/* Collaborative projects */}
                 <Tab.Pane eventKey="second">
-                  Lorem Ipsum
                   <Row>
                     {collaborativeProjects.map((project, index) => (
                       <ProjectCard
@@ -175,11 +174,15 @@ export const Projects = () => {
 
                 {/* Classroom projects */}
                 <Tab.Pane eventKey="third">
-                  Lorem Ipsum
                   <Row>
                     {classroomProjects.map((project, index) => (
-                      <ProjectCard key={index} {...project} />
+                      <ProjectCard
+                        key={project._id}
+                        id={project._id}
+                        {...project}
+                      />
                     ))}
+                    <h2>Coming soon...</h2>
                   </Row>
                 </Tab.Pane>
               </TabContent>

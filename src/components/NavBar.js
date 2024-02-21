@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
@@ -12,9 +12,11 @@ import navIcon4 from '../assets/img/nav-icon4.png';
 import ProfilePicture from './ProfilePicture';
 
 export const NavBar = ({ appRef }) => {
+  const location = useLocation();
+
   // Working Links for the skills, badging, homepage, etc
   // Initial set state will be home page
-  const [activeLink, setActiveLink] = useState('home');
+  const [activeLink, setActiveLink] = useState('');
 
   // Keep information whether the user has scrolled
   const [scrolled, setScroll] = useState(false);
@@ -25,8 +27,8 @@ export const NavBar = ({ appRef }) => {
   // Use effect hook would be triggered if the user has set the state for scrolling to be true (start scrolling)
   useEffect(() => {
     const onScroll = () => {
-      // If user's scroll height is more than 50, set the scroll to be true
-      if (appRef && appRef.current.scrollTop > 50) {
+      // If user's scroll height is more than 23, set the scroll to be true
+      if (appRef && appRef.current.scrollTop > 23) {
         setScroll(true);
       }
       //   Else if the user's scroll height is less than 50,or hasn't been scrolled yet, set the scroll to be false
@@ -56,11 +58,23 @@ export const NavBar = ({ appRef }) => {
   const toggleNavbar = () => {
     setExpanded(!expanded);
   };
+
+  // Helper function to determine link path based on current location context
+  const getNavLinkPath = (section) => {
+    // If the app is not on the main page, direct to the main page with hash
+    if (location.pathname !== '/mainHome') {
+      return `/mainHome#${section}`;
+    }
+
+    // If on main home page, use hash only
+    return `/mainHome#${section}`;
+  };
+
   return (
     // React-bootstrap navigation bar
     <Navbar expand="md" className={scrolled ? 'scrolled' : ''}>
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           {/* Image brand logo */}
           <ProfilePicture />
         </Navbar.Brand>
@@ -74,12 +88,16 @@ export const NavBar = ({ appRef }) => {
 
             <Nav.Link
               as={Link}
-              to="/#home"
+              to={getNavLinkPath('mainHome')}
               className={
                 activeLink === 'home' ? 'active navbar-link' : 'navbar-link'
               }
               //   When the link has been clicked, update to the home page
-              onClick={() => setActiveLink('home')}
+              onClick={() => {
+                setActiveLink('home');
+                // Close
+                setTimeout(() => setExpanded(false), 100);
+              }}
             >
               Home
             </Nav.Link>
@@ -87,7 +105,7 @@ export const NavBar = ({ appRef }) => {
             {/* Skills link */}
             <Nav.Link
               as={Link}
-              to="/#skills"
+              to={getNavLinkPath('skills')}
               className={
                 activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'
               }
@@ -99,7 +117,7 @@ export const NavBar = ({ appRef }) => {
             {/* Projects link */}
             <Nav.Link
               as={Link}
-              to="/#projects"
+              to={getNavLinkPath('projects')}
               className={
                 activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'
               }
@@ -108,22 +126,10 @@ export const NavBar = ({ appRef }) => {
               Projects
             </Nav.Link>
 
-            {/* badging link */}
-            <Nav.Link
-              as={Link}
-              to="/#badging"
-              className={
-                activeLink === 'badging' ? 'active navbar-link' : 'navbar-link'
-              }
-              onClick={(e) => setActiveLink('badging')}
-            >
-              Badging
-            </Nav.Link>
-
             {/* QNA */}
             <Nav.Link
               as={Link}
-              to="/#QNA"
+              to={getNavLinkPath('QNA')}
               className={
                 activeLink === 'QNA' ? 'active navbar-link' : 'navbar-link'
               }

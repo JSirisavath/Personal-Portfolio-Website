@@ -70,6 +70,12 @@ export const Footer = () => {
                 Icons8
               </a>
             </p>
+
+            <p>
+              <a href="https://www.vecteezy.com/free-videos/ai-technology">
+                Ai Technology Stock Videos by Vecteezy
+              </a>
+            </p>
           </Col>
         </Row>
       </Container>

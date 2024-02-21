@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { MainPage } from './components/MainPage';
 
+import { WelcomeSplashPage } from './components/WelcomePage';
+
 import { NavBar } from './components/NavBar';
 
 import { PurpleLine } from './components/PurpleLine';
@@ -62,8 +64,11 @@ function App() {
         <ScrollToSection />
 
         <Routes>
+          {/* Welcome page route */}
+          <Route path="/" element={<WelcomeSplashPage />} />
+
           {/* Home page routes */}
-          <Route path="/" element={<MainPage />} />
+          <Route path="/mainHome" element={<MainPage />} />
 
           {/* Handle routing for projects and projects own individual page that has their details. This is using the ID for that project */}
           <Route path="/projects/:id" element={<ProjectDetail />} />
