@@ -24,21 +24,24 @@ export const WelcomeSplashPage = () => {
     <>
       <div id="welcome" className="WelcomePage">
         <div className="bg-video-section">
-          {/* Background Video for Welcome Page */}
-          <video
-            autoPlay
-            loop
-            muted
-            id="welcomePageVideo"
-            className="background-video"
-          >
-            <source src={welcomePageBGVid} type="video/mp4" />
-          </video>
+          <div className="welcomeOverlayCover">
+            {/* Background Video for Welcome Page */}
+            <video
+              autoPlay
+              loop
+              muted
+              loading="lazy"
+              id="welcomePageVideo"
+              className="background-video"
+            >
+              <source src={welcomePageBGVid} type="video/mp4" />
+            </video>
+          </div>
           {/* Overlay text */}
 
           <div className="video-overlay">
             <div className="welcome-text-section">
-              <h1 id="welcomePageTagline">Welcome.</h1>
+              <h1 id="welcomePageTagline">Welcome!</h1>
             </div>
           </div>
         </div>
