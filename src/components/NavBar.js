@@ -14,7 +14,7 @@ import ProfilePicture from './ProfilePicture';
 export const NavBar = ({ appRef }) => {
   const location = useLocation();
 
-  // Working Links for the skills, badging, homepage, etc
+  // Working Links for the skills, homepage, etc
   // Initial set state will be home page
   const [activeLink, setActiveLink] = useState('');
 
@@ -23,6 +23,18 @@ export const NavBar = ({ appRef }) => {
 
   // Toggle the navbar expansion
   const [expanded, setExpanded] = useState(false);
+
+  // Determine active link based on my current web page location
+  useEffect(() => {
+    const hash = location.hash.replace('#', ''); // Remove '#' for comparison
+
+    // If the location pathname starts with '/mainHome', then useState to home as activeLink, else set the active nav link to other the other hash.
+    if (location.pathname === '/mainHome' && location.hash === '#mainHome') {
+      setActiveLink('home');
+    } else {
+      setActiveLink(hash);
+    }
+  }, [location]);
 
   // Use effect hook would be triggered if the user has set the state for scrolling to be true (start scrolling)
   useEffect(() => {
