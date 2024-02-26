@@ -1,19 +1,24 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { MainPage } from './components/MainPage';
+
+import { WelcomeSplashPage } from './components/WelcomePage';
+
 import { NavBar } from './components/NavBar';
-import { Banner } from './components/Banner';
+
 import { PurpleLine } from './components/PurpleLine';
 
-import { Skills } from './components/Skills';
-import { Projects } from './components/Projects';
-
-import { QnA } from './components/QnA';
-
-import { Contact } from './components/Contact';
+import { ProjectDetail } from './components/ProjectDetail'; // Will be project detail page when users click on a project tab
 
 import { Footer } from './components/Footer';
 
 import React, { useEffect, useRef } from 'react';
+
+import ScrollToSection from './components/ScrollToSection';
+
+// Routing for linking personal projects to a separate page showcasing their details
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const appRef = useRef(null);
@@ -45,31 +50,33 @@ function App() {
     };
   }, []);
   return (
-    <div
-      ref={appRef}
-      className="App"
-      style={{ overflowY: 'scroll', height: '100vh' }}
-    >
-      {/* Custom purple line on the left side with "gradient" effect */}
-      <PurpleLine appRef={appRef} />
+    <Router>
+      <div
+        ref={appRef}
+        className="App"
+        style={{ overflowY: 'scroll', height: '100vh' }}
+      >
+        {/* Custom purple line on the left side with "gradient" effect */}
+        <PurpleLine appRef={appRef} />
+        {/* Custom NavBar link */}
+        <NavBar appRef={appRef} />
 
-      {/* Custom NavBar link */}
-      <NavBar appRef={appRef} />
-      {/* Banner with the space animation and about me section. Also includes the "space" background */}
-      <Banner />
-      {/* Skills tab */}
-      <Skills />
+        <ScrollToSection />
 
-      <Projects />
+        <Routes>
+          {/* Welcome page route */}
+          <Route path="/" element={<WelcomeSplashPage />} />
 
-      {/* Question and answer section */}
-      <QnA />
+          {/* Home page routes */}
+          <Route path="/mainHome" element={<MainPage />} />
 
-      {/* Contact form using node mailer and express library. Work in server.js and contact.js for client side */}
-      <Contact />
-
-      <Footer />
-    </div>
+          {/* Handle routing for projects and projects own individual page that has their details. This is using the ID for that project */}
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+        </Routes>
+        {/* Footer with copy right info and icons that was used from Icon8 */}
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

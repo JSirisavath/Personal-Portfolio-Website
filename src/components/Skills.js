@@ -11,7 +11,7 @@ import colorSharp from '../assets/img/color-sharp.png';
 export const Skills = () => {
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
+      // the naming can be any
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -36,7 +36,11 @@ export const Skills = () => {
           <Col>
             <div className="skill-bx">
               <h2>Skills</h2>
-              <p>Lorem ipsam text example</p>
+              <p>
+                Here are my current technical skills I am familiar with! I will
+                continue to hone those skills and add anymore as I continue
+                pursuing learning and developing with new technologies!
+              </p>
               {/* React carousel that is will infinitely rotate */}
               <Carousel
                 responsive={responsive}
@@ -49,16 +53,56 @@ export const Skills = () => {
                   <h5>Web Development</h5>
                 </div>
                 <div className="item">
-                  <img src={meter2} alt="skill-img" />
+                  <img src={meter1} alt="skill-img" />
                   <h5>Python Development</h5>
                 </div>
                 <div className="item">
-                  <img src={meter3} alt="skill-img" />
+                  <img src={meter1} alt="skill-img" />
                   <h5>Java Development</h5>
                 </div>
                 <div className="item">
                   <img src={meter1} alt="skill-img" />
                   <h5>JavaScript Development</h5>
+                </div>
+                <div className="item">
+                  <img src={meter3} alt="skill-img" />
+                  <h5>Reactjs Development</h5>
+                </div>
+                <div className="item">
+                  <img src={meter2} alt="skill-img" />
+                  <h5>Vuejs Development</h5>
+                </div>
+                <div className="item">
+                  <img src={meter2} alt="skill-img" />
+                  <h5>Nodejs</h5>
+                </div>
+                <div className="item">
+                  <img src={meter3} alt="skill-img" />
+                  <h5>Django</h5>
+                </div>
+                <div className="item">
+                  <img src={meter2} alt="skill-img" />
+                  <h5>Flask</h5>
+                </div>
+                <div className="item">
+                  <img src={meter3} alt="skill-img" />
+                  <h5>SQLite</h5>
+                </div>
+                <div className="item">
+                  <img src={meter2} alt="skill-img" />
+                  <h5>MySQL</h5>
+                </div>
+                <div className="item">
+                  <img src={meter3} alt="skill-img" />
+                  <h5>MongoDB</h5>
+                </div>
+                <div className="item">
+                  <img src={meter3} alt="skill-img" />
+                  <h5>HTML</h5>
+                </div>
+                <div className="item">
+                  <img src={meter3} alt="skill-img" />
+                  <h5>CSS</h5>
                 </div>
               </Carousel>
             </div>

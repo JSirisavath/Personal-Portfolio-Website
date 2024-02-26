@@ -41,21 +41,45 @@ export const Footer = () => {
               <a
                 target="_blank"
                 href="https://icons8.com/icon/98964/youtube-logo"
+                rel="noreferrer"
               >
                 YouTube Logo
               </a>{' '}
               icon by{' '}
-              <a target="_blank" href="https://icons8.com">
+              <a target="_blank" href="https://icons8.com" rel="noreferrer">
                 Icons8
               </a>
             </p>
             <p>
-              <a target="_blank" href="https://icons8.com/icon/9622/microphone">
+              <a
+                target="_blank"
+                href="https://icons8.com/icon/9622/microphone"
+                rel="noreferrer"
+              >
                 Microphone
               </a>{' '}
               icon by{' '}
-              <a target="_blank" href="https://icons8.com">
+              <a target="_blank" href="https://icons8.com" rel="noreferrer">
                 Icons8
+              </a>
+            </p>
+            <p>
+              <a
+                target="_blank"
+                href="https://icons8.com/icon/tjuIMOXXe1mT/youtube-live"
+                rel="noreferrer"
+              >
+                Live
+              </a>{' '}
+              icon by{' '}
+              <a target="_blank" href="https://icons8.com" rel="noreferrer">
+                Icons8
+              </a>
+            </p>
+
+            <p>
+              <a href="https://www.vecteezy.com/free-videos/particle">
+                Particle Stock Videos by Vecteezy
               </a>
             </p>
           </Col>

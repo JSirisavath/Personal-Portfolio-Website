@@ -4,6 +4,8 @@ import { Container, Col, Row } from 'react-bootstrap';
 
 import contactImg from '../assets/img/contact-img.svg';
 
+import { getAPIBaseURL } from '../config';
+
 export const Contact = () => {
   const formInitialDetails = {
     firstName: '',
@@ -38,8 +40,9 @@ export const Contact = () => {
     // Show users that the form is being sent and showing them the message that it is sending
     setButtonText('Sending...');
 
-    // Server is running on local host 5000
-    let response = await fetch('http://localhost:3001/contact', {
+    // Server is running on local host 8080
+    const baseURL = getAPIBaseURL();
+    let response = await fetch(`${baseURL}/api/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/json;charset=utf-8',

@@ -131,6 +131,149 @@ p.danger {
   color: red;
 }
 
+/************ Welcome Page CSS ************/
+
+/* Welcome page background video */
+
+.WelcomePage .bg-video-section {
+  /* Video and text section.  Position is relative for elements (text, video, etc.) inside this 'container' are relative to this background video section of the container */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.background-video {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 50%; /* Centers vertically */
+  left: 50%; /* Centers horizontally */
+  transform: translate(-50%, -50%); /* Adjust based on the element's size */
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.welcomeOverlayCover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom, #2a272a, #4b4a54);
+  opacity: 0.8;
+}
+
+.welcome-text-section {
+  text-align: center; /* Center the text and button inside the div */
+  position: relative;
+}
+
+.technology-stack-icons-section {
+  position: sticky;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 65px;
+  padding-bottom: 20px;
+}
+
+.carousel-slide {
+  justify-content: space-between;
+}
+
+.carousel-item {
+  flex: 0 0 33.333%; /* Do not grow, do not shrink, initial base width */
+  padding: 5px; /* Optional, for some spacing between items */
+}
+
+.carousel-item img {
+  width: 200px; /* Adjust based on your preference */
+  height: 105px;
+  margin: auto; /* Center the image */
+  display: block;
+  object-fit: contain;
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+  .carousel-item img {
+    width: 250px;
+    height: 150px;
+  }
+}
+
+/* Smaller screens */
+@media (max-width: 480px) {
+  .carousel-item img {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+.welcome-btn {
+  padding-bottom: 2rem;
+}
+
+#welcomePageTagline {
+  position: relative;
+  padding-top: 6.25rem;
+  /* padding-right: 0.5rem; */
+  /* padding-left: rem; */
+  padding-bottom: 4rem;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 430px) {
+  #welcomePageTagline {
+    padding-top: 2rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    padding-bottom: 3.5rem;
+    font-size: 2.5rem; /* Adjusted font size for readability on mobile */
+    text-align: center;
+  }
+
+  .background-video {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 960%;
+    height: 100%;
+  }
+}
+
+/* Media query for tablets */
+@media (min-width: 768px) {
+  #welcomePageTagline {
+    position: relative;
+    /* padding-left: 2.5rem; */
+    font-size: 4rem; /* Adjusted font size for readability on mobile */
+    text-align: center; /* Optionally center text for mobile */
+  }
+}
+
 /************ Navbar Css ************/
 
 /* Profile pic hover affect - Both image itself and the container */
@@ -159,6 +302,8 @@ nav.navbar {
   top: 0;
   z-index: 9999;
   transition: 0.32s ease-in-out;
+
+  backdrop-filter: blur(11px); /* Blur effect for the background content */
 }
 nav.navbar.scrolled {
   padding: 0px 0;
@@ -172,6 +317,7 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   color: #fff !important;
   letter-spacing: 0.8px;
   padding: 0 25px;
+  padding-top: 9px;
   font-size: 18px;
   opacity: 0.75;
 }
@@ -313,11 +459,12 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 .Seeds_of_Success_url:hover {
   color: #9c9c9c; /* Even lighter grey color for hover state */
 }
+
 /************ Banner Css ************/
 .banner {
   margin-top: 0;
-  padding: 260px 0 100px 0;
-  background-image: url('./assets/img/banner-bg.png');
+  padding: 270px 0 100px 0;
+  background-image: url('./assets/img/DALLEbgCover.png');
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -509,7 +656,12 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   padding: 130px 0;
   /* z-index: -1; */
   position: relative;
-  background-color: black;
+  background-color: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+  /* width: 100vw;
+  height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .project h2 {
   font-size: 45px;
@@ -523,10 +675,10 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   line-height: 1.5em;
   margin: 14px auto 30px auto;
   text-align: center;
-  width: 56%;
+  max-width: 95%;
 }
 .project .nav.nav-pills {
-  width: 72%;
+  width: 100%;
   margin: 0 auto;
   border-radius: 50px;
   background-color: rgb(255 255 255 / 10%);
@@ -578,50 +730,60 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 0 55px 55px 0;
 }
-.proj-imgbx {
-  position: relative;
-  border-radius: 30px;
+/* Project card */
+.cardContainer {
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+  border-radius: 18px;
   overflow: hidden;
-  margin-bottom: 24px;
 }
-.proj-imgbx::before {
-  content: '';
-  background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
-  opacity: 0.85;
-  position: absolute;
-  width: 100%;
-  height: 0;
-  transition: 0.4s ease-in-out;
+
+.proj-box {
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
 }
-.proj-imgbx:hover::before {
-  height: 100%;
+
+.card-img {
+  height: 230px;
+  background-size: cover;
+  background-position: center;
 }
-.proj-txtx {
-  position: absolute;
+
+.proj-content {
+  padding: 1rem;
   text-align: center;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.5s ease-in-out;
-  opacity: 0;
-  width: 100%;
 }
-.proj-imgbx:hover .proj-txtx {
-  top: 50%;
-  opacity: 1;
+
+.tech-stack {
+  font-size: 0.8rem;
+  color: #ccc;
 }
-.proj-txtx h4 {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  line-height: 1.1em;
+
+.proj-title {
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0.5rem 0;
 }
-.proj-txtx span {
-  font-style: italic;
-  font-weight: 400;
-  font-size: 15px;
-  letter-spacing: 0.8px;
+
+.proj-actions {
+  display: flex;
+  justify-content: space-around;
+  background: #5930e5;
+  padding: 0.5rem;
 }
+
+.proj-detail-btn,
+.github-btn {
+  color: #fff;
+  text-decoration: none;
+}
+
 .background-image-right {
   top: 20%;
   position: absolute;
@@ -631,12 +793,126 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   z-index: -4;
 }
 
+/* Project details page styles */
+.projectDetailPage {
+  margin-top: 0;
+  padding: 240px 0 300px 0;
+  background-image: url('./assets/img/DALLESpaceAmbientBg.png');
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Project details page - video box outline */
+
+.Project_title_container {
+  margin-bottom: 2rem;
+}
+
+.Project_title_box {
+  /* margin-bottom: 2rem; */
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 17px 16px;
+  background: linear-gradient(
+    90.21deg,
+    rgba(170, 54, 124, 0.5) -5.91%,
+    rgba(74, 47, 189, 0.5) 111.58%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  /* margin-top: 20px; */
+  /* margin-bottom: 40px; */
+  display: inline-block;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 900px; /* Example max-width, adjust as needed */
+  margin: auto; /* Centers the video container */
+}
+
+/* Project Video style */
+.ratio {
+  width: 100%;
+}
+
+/* Project detail description styles */
+.descriptionContainer {
+  padding-bottom: 25px;
+}
+
+#projectDetailDescription {
+  padding-bottom: 1.5rem;
+  color: #b8b8b8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px auto 30px auto;
+  text-align: center;
+  width: 76%;
+  flex-wrap: wrap;
+}
+
+/* Images carousel */
+.carousel-image-section {
+  margin-top: 5rem;
+  width: 100%;
+  padding: inherit;
+  position: relative;
+}
+
+/* Github button container */
+.ghButtonContainer {
+  margin-top: 2rem;
+  padding: 22px 16px;
+  position: relative;
+}
+
+button.Gh-project-btn {
+  font-weight: 700;
+  padding: 14px 48px;
+  font-size: 18px;
+  border: transparent;
+  background-color: #303030;
+  transition: 0.4 ease-in-out;
+}
+
+button.Gh-project-btn:hover {
+  background-color: #000;
+  font-size: 20px;
+}
+
+/* Media query for tablets */
+@media (min-width: 768px) {
+  .video-container {
+    max-width: 90%; /* Adjust the max-width as needed */
+  }
+}
+
+/* Media query for desktop */
+@media (min-width: 992px) {
+  .video-container {
+    max-width: 90%; /* Adjust the max-width as needed */
+  }
+}
+
+/* Media query for large desktops */
+@media (min-width: 1200px) {
+  .video-container {
+    max-width: 1200px; /* Adjust the max-width as needed */
+  }
+}
+
 /* Questions and Answer Section */
 .qna {
   padding: 120px 0;
   /* z-index: -1; */
-  background-image: url('./assets/img/banner-bg.png');
-  background-position: top left;
+  background-image: url('./assets/img/DALLEbgCover.png');
+  background-position: top right;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -780,12 +1056,20 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 /* Contact section */
 .contact {
-  background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+  background-image: url('./assets/img/banner-bg.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+
   padding: 100px 0 150px 0;
 }
+
+/* Image animation as well */
 .contact img {
   width: 92%;
+  animation: updown 3s linear infinite;
 }
+
 .contact h2 {
   font-size: 45px;
   font-weight: 700;

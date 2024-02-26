@@ -1,64 +1,32 @@
+// Main server file
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
-const nodemailer = require('nodemailer');
-require('dotenv').config();
-
-const port = process.env.PORT || 3001;
-
-// server used to send emails
+const port = process.env.PORT || 8080;
+const contactRoutes = require('./routes/contact'); // Email route
+const projectRoutes = require('./routes/projects'); // Project route
+require('./db/mongoDBConnection'); // Mongo db connection required for server to connect to mongo db
 const app = express();
+const path = require('path');
 app.use(cors());
 app.use(express.json());
+// Home page
 app.use('/', router);
-app.listen(port, () => console.log('Server Running'));
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
 
-const contactEmail = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.APP_PASS,
-  },
-});
+// Contact route
+// All contact routes will be prefixed with /api. So any request to my server that starts with '/api', the request will be directed to contact routes router for handling, which is for email sending
+app.use('/api', contactRoutes);
 
-// Verify it is running
-contactEmail.verify((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Ready to Send');
-  }
-});
+// Project route
+app.use('/api/projects', projectRoutes);
 
-// Make a post request
-router.post('/contact', (req, res) => {
-  // Combine users first name and last name
-  const name = req.body.firstName + '.' + req.body.lastName;
-  const email = req.body.email;
-  const message = req.body.message;
-  const phone = req.body.phone;
-  const mail = {
-    from: name,
-    to: 'Jsirisavath123@gmail.com',
-    subject: 'Contact Form Submission - Portfolio',
-    html: `<p>Name: ${name}</p>
-           <p>Email: ${email}</p>
-           <p>Phone: ${phone}</p>
-           <p>Message: ${message}</p>`,
-  };
+app.listen(port, () => console.log(`Server Running on ${port}`));
 
-  // Send back the error
-  contactEmail.sendMail(mail, (error, info) => {
-    if (error) {
-      console.error('Error sending email: ', error);
-      res.status(500).json({ message: 'Error sending email', error: error });
-    } else {
-      console.log('Email sent: ', info.response);
-      res
-        .status(200)
-        .json({ code: 200, status: 'Message Sent', response: info.response });
-    }
-  });
+// Serve static files from the build folder. For deploying app and want express to serve the production build of the React app.
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Catch any requests that doesn't match any url patterns
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

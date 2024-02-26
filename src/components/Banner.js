@@ -6,7 +6,7 @@ import { ArrowRightCircle } from 'react-bootstrap-icons';
 import headerImg from '../assets/img/header-img.svg';
 
 // Use state and Use Effect hooks to store the "state" of the animation typing text
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 // Animate CSS
 import 'animate.css';
@@ -19,14 +19,18 @@ export const Banner = () => {
   // Text to rotate
   const toRotate = [
     'Hello World!',
-    'I am interested in ...',
-    'Web Developer',
-    'Java Developer',
-    'JavaScript Developer',
-    'Python Developer',
-    'Reactjs Developer',
-    'Full Stack Developer',
+    'My passions are in...',
+    'Software Engineer',
+    'Software Developer',
+    'Web Development',
+    'Java Development',
+    'JavaScript Development',
+    'Python Development',
+    'Reactjs Development',
+    'Vuejs Development',
+    'Full Stack Development',
     'DevOps',
+    'and many more!',
   ];
   // Loop counter on which text to start first
   const [loopNum, setLoopNum] = useState(0);
@@ -106,7 +110,7 @@ export const Banner = () => {
                     <span className="tagline">Welcome to my Portfolio!</span>
                     <h1 className="header-with-rotation">
                       {`Hi, I'm Jerry Sirisavath,  `}
-                      <span className="txt-rotate" dataPeriod="1000">
+                      <span className="txt-rotate" dataperiod="1000">
                         <span className="wrap"> {text}</span>
                       </span>
                     </h1>
@@ -114,11 +118,30 @@ export const Banner = () => {
                   <div className="AboutMeSection">
                     {/* About me section */}
                     <p>
-                      As a current student at Minneapolis College (MCTC), I am
-                      immersing myself in the dynamic world of technology with a
-                      keen focus on full-stack and web development. My journey
-                      in tech unfolds as I volunteer with a vibrant software
-                      development team at{' '}
+                      As a current Computer Science student at{' '}
+                      <a
+                        href="https://www.metrostate.edu/openhouse?utm_source=google+&utm_campaign=openhousespring2024&utm_medium=cpc&utm_term=search&gad_source=1&gclid=Cj0KCQiA5-uuBhDzARIsAAa21T_TUFnH-EWnNYGbsSHHEG2QutX9pnafg8K7Axol0RK92mpNJw0cZD0aAtXcEALw_wcB"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="Seeds_of_Success_url"
+                      >
+                        <i>"Metropolitan State University"</i>
+                      </a>{' '}
+                      , I am immersing myself in the dynamic world of technology
+                      with a keen focus on developing my technical skills within
+                      full-stack apps and web development. From my from my
+                      previous school at Minneapolis College I've graduated with
+                      an technical degree in Computer Software Development with
+                      few earned certificates. Throughout my time there, I grew
+                      my learning in developing programs, such as withn
+                      classroom assignments, projects, or group collaborations,
+                      and whilst learning those fundamentals, I also transformed
+                      those experiences to outside learning, and crafting
+                      personal projects on the side. These learning helped me
+                      embark my journey further in tech where my passion for
+                      learning continues to grow. Outside of learning within a
+                      classroom setting, I spend some of my free time
+                      volunteering with a vibrant software development team at{' '}
                       <a
                         href="https://seedsofsuccess.us"
                         target="_blank"
@@ -128,15 +151,18 @@ export const Banner = () => {
                         <i>"Seeds of Success"</i>
                       </a>
                       , where I collaborate with a community of open and
-                      growth-minded individuals. My passion for technology
-                      extends to Java development, where I leverage my skills to
-                      craft robust and scalable solutions. With an insatiable
-                      appetite for learning and mastering various technology
-                      stacks, I am committed to bridging the gap between
-                      innovative business ideas and the technical roadblocks
-                      they encounter. My goal is to transform challenges into
-                      opportunities through creative and efficient software
-                      solutions.
+                      growth-minded individuals. Even with my strong passion for
+                      technology, I am a continuous advocate to pursuing
+                      lifelong learning in other fields that are interesting to
+                      me - such as my love for philosophy, science, mathematics,
+                      and or creative arts. With a desire for learning and
+                      mastering various technology stacks paired with my
+                      ambition of lifelong learning, I am committed to bridging
+                      the gap between innovative business ideas and the
+                      technical roadblocks they encounter. My goal is to
+                      transform challenges into opportunities through creative
+                      and efficient software solutions that would benefit anyone
+                      positively.
                     </p>
                     <button onClick={handleClick}>
                       Contact Me! <ArrowRightCircle size={25} />
