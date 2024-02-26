@@ -119,7 +119,11 @@ export const QnA = () => {
                   please feel free and join our discord server. There, we
                   eventually will ask our audiences questions, answer questions,
                   create polls, and other awesome content to be added there!{' '}
-                  <a href="https://discord.gg/eSYHqusD5t" target="_blank">
+                  <a
+                    href="https://discord.gg/eSYHqusD5t"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Join our Discord Community!
                   </a>
                 </i>
