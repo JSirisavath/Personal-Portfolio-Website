@@ -1,20 +1,41 @@
-// MongoDB connection via mongoose
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/personalProjectDataBase', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// Db connection string based on production or development environment:
+// Set connection string and database name based on env
+const isProductionEnv = process.env.NODE_ENV === 'production';
 
-// Mongoose db connection
-const db = mongoose.connection;
+// If in production, use mongo db atlas connection string else use local mongo db compass string
+const connectionString = isProductionEnv
+  ? process.env.MONGO_DB_ATLAS_CONNECTION_URI
+  : process.env.MONGO_DB_LOCAL_URI;
 
-db.on('error', console.error.bind(console, 'Connection Error: '));
+// Mongo db name based on if production env
+const mongoDBName = process.env.MONGO_DB_ATLAS_NAME;
 
-db.once('open', function () {
-  console.log('Connected Successfully to MongoDB');
-});
+async function connectDB() {
+  try {
+    const options = {
+      serverSelectionTimeoutMS: 5000, // Timeout after 5000ms instead of the default 30000ms
+      socketTimeoutMS: 45000, // Increase socket timeout
+      connectTimeoutMS: 20000, // Increase connection timeout
+    };
 
-// NOTE: Images will be stored in google cloud storage and then retrieved by project ID. When images are retrieved, they are image strings
+    // If the environment is an production, then add the Atlas MongoDB name part of  options
+    if (isProductionEnv) {
+      options.dbName = mongoDBName;
+    }
+    console.log(`${connectionString}`);
+    await mongoose.connect(connectionString, options);
+    console.log(
+      `Connected Successfully to MongoDB ${
+        isProductionEnv ? 'Atlas' : 'Local'
+      }!`
+    );
+  } catch (error) {
+    console.error('Mongo DB Connection Error: ', error);
+    process.exit(1); // Exit process if cannot connect to DB
+  }
+}
 
-module.exports = db;
+module.exports = connectDB;

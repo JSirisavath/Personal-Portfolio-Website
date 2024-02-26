@@ -13,6 +13,6 @@ const collaborativeProjectSchematics = new mongoose.Schema({
 });
 
 module.exports = mongoose.model(
-  'collaborativeProjects',
+  'collaborated_projects',
   collaborativeProjectSchematics
 );

@@ -12,6 +12,6 @@ const individualProjectSchematics = new mongoose.Schema({
 });
 
 module.exports = mongoose.model(
-  'individualProjects',
+  'individual_projects',
   individualProjectSchematics
 );

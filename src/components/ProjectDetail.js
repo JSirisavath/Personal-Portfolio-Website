@@ -114,13 +114,14 @@ export const ProjectDetail = () => {
                 {/* Video demo showcasing the video */}
                 <video
                   className="video"
+                  type="video/mp4"
                   src={project.video}
                   title={project.title}
                   autoPlay={false}
                   controls={true}
                   allowFullScreen
                   muted
-                  // poster={project.imgUrl}
+                  poster={project.imgUrl}
                 ></video>
               </Ratio>
             </div>

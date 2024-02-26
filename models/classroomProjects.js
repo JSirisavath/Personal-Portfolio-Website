@@ -12,6 +12,6 @@ const classroomProjectSchematics = new mongoose.Schema({
 });
 
 module.exports = mongoose.model(
-  'classroomProjects',
+  'classroom_projects',
   classroomProjectSchematics
 );

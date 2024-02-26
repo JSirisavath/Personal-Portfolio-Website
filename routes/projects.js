@@ -7,7 +7,7 @@ const router = express.Router();
 const IndividualProjects = require('../models/individualProjects');
 const CollaborativeProjects = require('../models/collaborativeProjects');
 const ClassroomProjects = require('../models/classroomProjects');
-const mongoose = require('mongoose');
+const { default: mongoose } = require('mongoose');
 
 // Get all projects data
 router.get('/projects', async (req, res) => {
@@ -22,11 +22,15 @@ router.get('/projects', async (req, res) => {
     const allClassroomProjects = await ClassroomProjects.find();
 
     // Response from all projects data
-    res.json(
-      allIndividualProjects,
-      allCollaborativeProjects,
-      allClassroomProjects
-    );
+
+    // Combining all projects into a single object with respective keys
+    const allProjects = {
+      individualProjects: allIndividualProjects,
+      collaborativeProjects: allCollaborativeProjects,
+      classroomProjects: allClassroomProjects,
+    };
+
+    res.json(allProjects);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -35,20 +39,23 @@ router.get('/projects', async (req, res) => {
 // Get all individual projects
 router.get('/individual', async (req, res) => {
   try {
-    // All individual projects
-    const allIndividualProjects = await IndividualProjects.find();
-
-    // console.log('Sending individual projects:', allIndividualProjects);
-
-    // Response from all individual projects data
-    res.json(allIndividualProjects);
+    const projects = await IndividualProjects.find({});
+    if (projects.length === 0) {
+      console.log('No Documents in individual projects');
+      // Return a 200 with an empty array if no documents are found
+      return res.status(200).json([]);
+    }
+    // console.log('Documents found!');
+    res.json(projects); // Send the found projects as JSON
   } catch (err) {
     console.error('Error fetching individual projects: ', err);
-    res.status(500).json({ message: err.message });
+    res
+      .status(500)
+      .json({ message: 'Error querying individualProjects', error: err });
   }
 });
 
-// Get all collaborative projects
+// // Get all collaborative projects
 router.get('/collaborative', async (req, res) => {
   try {
     // All collaborative projects
@@ -61,7 +68,7 @@ router.get('/collaborative', async (req, res) => {
   }
 });
 
-// Get all classroom projects
+// // Get all classroom projects
 router.get('/classroom', async (req, res) => {
   try {
     // All classroom projects
@@ -74,7 +81,7 @@ router.get('/classroom', async (req, res) => {
   }
 });
 
-// Specific project
+// // Specific project
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
 
