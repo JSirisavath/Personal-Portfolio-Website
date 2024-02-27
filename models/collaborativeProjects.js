@@ -14,5 +14,6 @@ const collaborativeProjectSchematics = new mongoose.Schema({
 
 module.exports = mongoose.model(
   'collaborated_projects',
-  collaborativeProjectSchematics
+  collaborativeProjectSchematics,
+  'collaborated_projects'
 );
