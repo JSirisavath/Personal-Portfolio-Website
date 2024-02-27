@@ -25,7 +25,7 @@ async function connectDB() {
     if (isProductionEnv) {
       options.dbName = mongoDBName;
     }
-    console.log(`${connectionString}`);
+
     await mongoose.connect(connectionString, options);
     console.log(
       `Connected Successfully to MongoDB ${

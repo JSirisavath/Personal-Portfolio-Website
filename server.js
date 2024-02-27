@@ -13,6 +13,8 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
+app.set('trust proxy', true);
+
 // Create a Secret Manager client
 const client = new SecretManagerServiceClient();
 
