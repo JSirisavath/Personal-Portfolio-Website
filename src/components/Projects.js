@@ -34,7 +34,14 @@ export const Projects = () => {
 
         // APP uses "/api/projects/individual" and is being handled by projects.js in routes folder
         const responseForIndividualProject = await fetch(
-          `${baseURL}/api/projects/individual`
+          `${baseURL}/api/projects/individual`,
+          {
+            method: 'Get',
+            mode: 'cors',
+            headers: {
+              Accept: 'application/json',
+            },
+          }
         );
 
         // Give status code if HTTP error
@@ -58,7 +65,14 @@ export const Projects = () => {
 
         // await the execution until Fetch for Collaborative project is returned
         const responseForCollabProjects = await fetch(
-          `${baseURL}/api/projects/collaborative`
+          `${baseURL}/api/projects/collaborative`,
+          {
+            method: 'Get',
+            mode: 'cors',
+            headers: {
+              Accept: 'application/json',
+            },
+          }
         );
 
         if (!responseForCollabProjects.ok) {
@@ -75,7 +89,14 @@ export const Projects = () => {
 
         // Class room projects
         const responseForClassroomProject = await fetch(
-          `${baseURL}/api/projects/classroom`
+          `${baseURL}/api/projects/classroom`,
+          {
+            method: 'Get',
+            mode: 'cors',
+            headers: {
+              Accept: 'application/json',
+            },
+          }
         );
 
         if (!responseForClassroomProject.ok) {

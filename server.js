@@ -10,7 +10,19 @@ const projectRoutes = require('./routes/projects');
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(cors());
+// const corsOption = {
+//   origin:
+//     process.env.NODE_ENV === 'production'
+//       ? ['https://personal-web-portfolio-js.uc.r.appspot.com']
+//       : [
+//           'https://personal-web-portfolio-js.uc.r.appspot.com',
+//           'http://localhost:3000',
+//           'http://localhost:8080',
+//         ],
+//   optionsSuccessStatus: 200,
+// };
+
+// app.use(cors(corsOption));
 app.use(express.json());
 
 app.set('trust proxy', true);
@@ -25,78 +37,77 @@ async function accessSecret(secretName) {
   return payload;
 }
 
-// Connect to MongoDB
-(async () => {
-  // Setup routes
-  app.use('/api', contactRoutes); // Contact routes
-  app.use('/api/projects', projectRoutes); // Project routes
+async function initializeApp() {
+  // Access secrets from Secret Manager
+  try {
+    const mongoURIConnectionString = await accessSecret(
+      'projects/138835334361/secrets/MONGO_DB_ATLAS_CONNECTION_URI/versions/1'
+    );
+    const mongoDBAtlasName = await accessSecret(
+      'projects/138835334361/secrets/MONGO_DB_ATLAS_NAME/versions/latest'
+    );
 
-  // Serve static files from the build folder
-  app.use(express.static(path.join(__dirname, 'build')));
+    // const mongoDBLocalURI = await accessSecret(
+    //   'projects/138835334361/secrets/MONGO_DB_LOCAL_URI/versions/latest'
+    // );
 
-  // Catch all other requests and serve the React app
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
+    const appPass = await accessSecret(
+      'projects/138835334361/secrets/APP_PASS/versions/latest'
+    );
+    const emailUser = await accessSecret(
+      'projects/138835334361/secrets/EMAIL_USER/versions/latest'
+    );
 
-  // Start the server
-  app.listen(port, async () => {
-    console.log(`Server is running on port ${port}`);
+    const reactAppMailchimpID = await accessSecret(
+      'projects/138835334361/secrets/REACT_APP_MAILCHIMP_ID/versions/latest'
+    );
 
-    // Access secrets from Secret Manager
-    //versions/latest
-    try {
-      const mongoURIConnectionString = await accessSecret(
-        'projects/138835334361/secrets/MONGO_DB_ATLAS_CONNECTION_URI/versions/latest'
-      );
-      const mongoDBAtlasName = await accessSecret(
-        'projects/138835334361/secrets/MONGO_DB_ATLAS_NAME/versions/latest'
-      );
+    const reactMailchimpU = await accessSecret(
+      'projects/138835334361/secrets/REACT_APP_MAILCHIMP_U/versions/latest'
+    );
 
-      const mongoDBLocalURI = await accessSecret(
-        'projects/138835334361/secrets/MONGO_DB_LOCAL_URI/versions/latest'
-      );
+    const reactMailchimpURL = await accessSecret(
+      'projects/138835334361/secrets/REACT_APP_MAILCHIMP_URL/versions/latest'
+    );
 
-      const appPass = await accessSecret(
-        'projects/138835334361/secrets/APP_PASS/versions/latest'
-      );
-      const emailUser = await accessSecret(
-        'projects/138835334361/secrets/EMAIL_USER/versions/latest'
-      );
+    // Use retrieved Google's secrets manager with env variables
+    process.env.REACT_APP_MAILCHIMP_URL = reactMailchimpURL;
 
-      const reactAppMailchimpID = await accessSecret(
-        'projects/138835334361/secrets/REACT_APP_MAILCHIMP_ID/versions/latest'
-      );
+    process.env.REACT_APP_MAILCHIMP_U = reactMailchimpU;
 
-      const reactMailchimpU = await accessSecret(
-        'projects/138835334361/secrets/REACT_APP_MAILCHIMP_U/versions/latest'
-      );
+    process.env.REACT_APP_MAILCHIMP_ID = reactAppMailchimpID;
 
-      const reactMailchimpURL = await accessSecret(
-        'projects/138835334361/secrets/REACT_APP_MAILCHIMP_URL/versions/latest'
-      );
+    process.env.EMAIL_USER = emailUser;
 
-      // Use retrieved Google's secrets manager with env variables
-      process.env.REACT_APP_MAILCHIMP_URL = reactMailchimpURL;
+    process.env.APP_PASS = appPass;
 
-      process.env.REACT_APP_MAILCHIMP_U = reactMailchimpU;
+    process.env.MONGO_DB_ATLAS_NAME = mongoDBAtlasName;
 
-      process.env.REACT_APP_MAILCHIMP_ID = reactAppMailchimpID;
+    process.env.MONGO_DB_ATLAS_CONNECTION_URI = mongoURIConnectionString;
 
-      process.env.EMAIL_USER = emailUser;
+    // Connect to db after the secrets has been fetched from google cloud
+    await connectDB();
 
-      process.env.APP_PASS = appPass;
+    // Setup routes
+    app.use('/api', contactRoutes); // Contact routes
+    app.use('/api/projects', projectRoutes); // Project routes
 
-      process.env.MONGO_DB_LOCAL_URI = mongoDBLocalURI;
+    // Serve static files from the build folder
+    app.use(express.static(path.join(__dirname, 'build')));
 
-      process.env.MONGO_DB_ATLAS_NAME = mongoDBAtlasName;
+    // Catch all other requests and serve the React app
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    });
 
-      process.env.MONGO_DB_ATLAS_CONNECTION_URI = mongoURIConnectionString;
+    // Start the server
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  } catch (error) {
+    console.error('Failed to initialize app:', error);
+  }
+}
 
-      // Connect to db after the secrets has been fetched from google cloud
-      await connectDB();
-    } catch (error) {
-      console.error('Error accessing MongoDB URI from Secret Manager:', error);
-    }
-  });
-})();
+// Init app
+initializeApp();
