@@ -54,7 +54,7 @@ function App() {
       <div
         ref={appRef}
         className="App"
-        style={{ overflowY: 'scroll', height: '100vh' }}
+        style={{ overflowY: 'scroll', overflowX: 'hidden', height: '100vh' }}
       >
         {/* Custom purple line on the left side with "gradient" effect */}
         <PurpleLine appRef={appRef} />
