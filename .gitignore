@@ -32,3 +32,5 @@ app.yaml
 mongo_data/
 
 .vscode/
+
+package-lock.json
